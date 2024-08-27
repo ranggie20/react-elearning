@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px; /* Add padding to body to avoid content sticking to the edges */
+}
+
+.question-container {
+    display: flex;
+    margin-bottom: 20px; /* Add space below each question */
+    align-items: flex-start;
+}
+
+.question-number {
+    width: 40px; /* Width of the number box */
+    height: 40px; /* Height of the number box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; /* Background color of the number box */
+    border: 2px solid #ccc; /* Border around the number box */
+    border-radius: 5px; /* Rounded corners for the number box */
+    margin-right: 20px; /* Space between the number box and question text */
+    font-size: 18px; /* Font size for the number */
+    font-weight: bold; /* Bold text for the number */
+}
+
+.question-text {
+    flex: 1;
+}
+
+.payment_methode, .payment_item {
+    margin-bottom: 10px;
+    padding-left: 20px; /* Add padding to the left of the payment options */
+}
+
+.radion_btn {
+    display: flex;
+    align-items: center;
+}
+
+.radion_btn input[type="radio"] {
+    display: none; /* Hide default radio button */
+}
+
+.radion_btn label {
+    cursor: pointer;
+    position: relative;
+    padding-left: 30px; /* Space for custom radio button */
+    /* Additional space between radio button and label text */
+    /* margin-left: 10px; */
+}
+
+.radion_btn label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.radion_btn input[type="radio"]:checked + label::before {
+    background: #2577FD; /* Change background when checked */
+    border: 2px solid #333;
+}
+
+
+/* 
+.radion_btn .check {
+    position: absolute;
+    left: 0;
+    top: 25%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #333;
+    display: none; 
+}
+
+.radion_btn input[type="radio"]:checked ~ .check {
+    display: block;
+    z-index: 100;
+} */

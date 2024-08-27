@@ -1,0 +1,21 @@
+.btn2.wishlist {
+    border: 1px solid #2577FD;
+    padding: .9rem;
+    border-radius: .3rem;
+    cursor: pointer;
+    transition: all .3s ease-out;
+}
+
+.btn2.wishlist svg{
+    color: #2577FD;
+    transition: all .3s ease-out;
+}
+
+.btn2.wishlist:hover {
+    background-color: #2577FD;
+    color: #fff ;
+}
+
+.btn2.wishlist:hover svg{
+    color: #fff;
+}

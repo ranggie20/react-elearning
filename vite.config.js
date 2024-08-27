@@ -7,8 +7,8 @@ export default defineConfig({
   esbuild: {
     loader: 'jsx',
     include: [
-      'src//*.jsx',
-      'src//*.tsx'
+      'src/**/*.jsx',
+      'src/**/*.tsx'
     ]
   }
 })
