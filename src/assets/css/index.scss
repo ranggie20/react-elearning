@@ -39,3 +39,26 @@
     }
   }
 }
+
+
+.slider-height2{
+  min-height: 200px;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+  .latest-padding{
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.footer-area {
+  background-color: #f8fafc;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+  .footer-padding{
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+}

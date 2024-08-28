@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import HeaderArea from './components/HeaderArea.jsx';
+import HeaderArea from './components/HeaderArea';
+import Footer from './components/Footer';
 
 const DefaultLayout = () => {
   return (
@@ -11,6 +12,8 @@ const DefaultLayout = () => {
       <main>
         <Outlet />
       </main>
+      <Footer>
+      </Footer>
     </div>
   )
 }

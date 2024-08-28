@@ -20,25 +20,18 @@ const NavMenu = () => {
           url: '/marketing',
           title: 'Marketing'
         },
+        { url: '/software',
+          title: 'IT & Software'
+        },
       ]
     },
     {
-      url: '/our-team',
+      url: '/ourteam',
       title: 'Our Team'
     },
     {
       url: '/about',
       title: 'About'
-    },
-    {
-      url: '/pages',
-      title: 'Pages',
-      subMenu: [
-        {
-          url: '/cart',
-          title: 'Cart'
-        },
-      ]
     },
   ]
   return (
