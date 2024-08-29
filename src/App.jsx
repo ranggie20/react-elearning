@@ -15,6 +15,10 @@ import Detail_BisnisPage from './pages/Detail_BisnisPage';
 import Basic_GamePage from './pages/Basic_GamePage';
 import Cyber_SecurityPage from './pages/Cyber_SecurityPage';
 import Html_DetailPage from './pages/Html_DetailPage';
+import JavaDetailPage from './pages/JavaDetailPage';
+import MicrocontrolerPage from './pages/MicrocontrolerPage';
+import StrategiMarketingPage from'./pages/StrategiMarketingPage';
+import WindowsDetailPage from './pages/WindowsDetailPage';
 
 function App() {
 
@@ -33,6 +37,10 @@ function App() {
             <Route path="/basicgame" element={<Basic_GamePage/>} />
             <Route path="/cybersecurity" element={<Cyber_SecurityPage/>} />
             <Route path="/html" element={<Html_DetailPage/>} />
+            <Route path="/java" element={<JavaDetailPage/>} />
+            <Route path="/micro" element={<MicrocontrolerPage/>} />
+            <Route path="/marketing" element={<StrategiMarketingPage/>} />
+            <Route path="/windows" element={<WindowsDetailPage/>} />
           </Route>
         </Routes>
       </Router>
