@@ -66,21 +66,21 @@ const SectionCourse = () => {
 								<div className="tab-content" id="nav-tabContent">
 									<div
 										className="tab-pane fade show active"
-										id="nav-home"
+										href="nav-home"
 										role="tabpanel"
 										aria-labelledby="nav-home-tab">
 										<h2>Web Development</h2>
 									</div>
 									<div
 										className="tab-pane fade"
-										id="nav-profile"
+										href="nav-profile"
 										role="tabpanel"
 										aria-labelledby="nav-profile-tab">
 										<h2>Game Development</h2>
 									</div>
 									<div
 										className="tab-pane fade"
-										id="nav-contact"
+										href="nav-contact"
 										role="tabpanel"
 										aria-labelledby="nav-contact-tab">
 										<h2>Programming Language</h2>
@@ -97,7 +97,7 @@ const SectionCourse = () => {
 										<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 												<div className="single-popular-items mb-50 text-center">
 													<div className="popular-img">
-														<a href="html_details.html">
+														<a href="/">
 															<img src="assets/img/gallery/html.jpeg" alt="" />
 														</a>
 														<div className="img-cap">
@@ -109,7 +109,7 @@ const SectionCourse = () => {
 													</div>
 												<div className="popular-caption">
 												<h3>
-													<a href="html_details.html"> Web Development </a>
+													<a href="/"> Web Development </a>
 												</h3>
 												<span>$ 5</span>
 										</div>
@@ -118,7 +118,7 @@ const SectionCourse = () => {
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 									<div className="single-popular-items mb-50 text-center">
 									<div className="popular-img">
-										<a href="java_details.html">
+										<a href="/">
 										<img src="assets/img/gallery/java.jpeg" alt="" />
 										</a>
 										<div className="img-cap">
@@ -130,7 +130,7 @@ const SectionCourse = () => {
 									</div>
 									<div className="popular-caption">
 										<h3>
-										<a href="java_details.html"> Java </a>
+										<a href="/"> Java </a>
 										</h3>
 										<span>$ 7</span>
 									</div>
@@ -139,7 +139,7 @@ const SectionCourse = () => {
 								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 									<div className="single-popular-items mb-50 text-center">
 										<div className="popular-img">
-											<a href="basic_game_details.html">
+											<a href="/">
 												<img src="assets/img/gallery/gallery1.jpeg" alt="" />
 											</a>
 											<div className="img-cap">
@@ -151,7 +151,7 @@ const SectionCourse = () => {
 										</div>
 											<div className="popular-caption">
 												<h3>
-												<a href="basic_game_details.html"> Basic Game Development </a>
+												<a href="/"> Basic Game Development </a>
 												</h3>
 												<span> $ 15 </span>
 											</div>

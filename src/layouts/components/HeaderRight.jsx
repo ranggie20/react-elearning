@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { LuUser2 } from "react-icons/lu";
-import { RiSearchLine } from "react-icons/ri";
+import { IoSearch } from "react-icons/io5";
 import { FaRegHeart } from "react-icons/fa";
 import { TbShoppingCart } from "react-icons/tb";
 import { MdNotificationsNone } from "react-icons/md";
@@ -12,7 +12,7 @@ const HeaderRight = () => {
       <ul className="menu-icon">
         <li>
           <Link className="nav-search search-switch">
-            <RiSearchLine className="icon search-icon" />
+            <IoSearch className="icon search-icon" />
           </Link>
         </li>
         <li>

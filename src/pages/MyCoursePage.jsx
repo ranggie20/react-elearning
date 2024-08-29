@@ -29,16 +29,15 @@ const DetailCourse=() => {
                     <div className="row">
                     <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div className="single-popular-items mb-50 text-center">
-                        <a href="my_course_cyber.html">
+                        <a href="/mycoursehtml">
                             <div className="popular-img">
                             <img src="assets/img/gallery/new_product2.png" alt="" />
                             </div>
                         </a>
                         <div className="popular-caption">
                             <h3>
-                            <a href="my_course_cyber.html">
-                                {" "}
-                                tutorial HTML: mebuat halaman web pertama anda{" "}
+                            <a href="/mycoursehtml">
+                                Tutorial mebuat halaman web untuk pemula
                             </a>
                             </h3>
                         </div>
@@ -46,18 +45,17 @@ const DetailCourse=() => {
                     </div>
                     <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div className="single-popular-items mb-50 text-center">
-                        <a href="my_marketing_strategi.html">
+                        <a href="/mycoursemarketing">
                             <div className="popular-img">
                             <img src="assets/img/gallery/popular5.png" alt="" />
                             </div>
                         </a>
                         <div className="popular-caption">
-                            <a href="my_marketing_strategi.html"></a>
+                            <a href="/mycoursemarketing"></a>
                             <h3>
-                            <a href="my_marketing_strategi.html" />
-                            <a href="my_marketing_strategi.html">
-                                {" "}
-                                Rahasia sukses marketing di era digital{" "}
+                            <a href="/mycoursemarketing" />
+                            <a href="/mycoursemarketing">
+                                Rahasia sukses marketing di era digital
                             </a>
                             </h3>
                         </div>

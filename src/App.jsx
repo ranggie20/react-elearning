@@ -13,7 +13,9 @@ import WishlistPage from './pages/WishlistPage';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import MyCoursePage from './pages/MyCoursePage';
+import MyCourseHtml from './pages/MyCourseHtml';
 import ProfilePage from './pages/ProfilePage';
+import MyCourseMarketing from './pages/MyCourseMarketing'
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
             <Route path="/registrasi" element={<RegistrationPage/>}/>
             <Route path="/mycourse" element={<MyCoursePage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
+            <Route path="/mycoursehtml" element={<MyCourseHtml/>} />
+            <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
           </Route>
         </Routes>
       </Router>

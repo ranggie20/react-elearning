@@ -34,7 +34,7 @@ const SectionLogin=() => {
                             Daftar sekarang dan nikmati akses penuh ke semua fitur dan dan
                             layanan kursus yang akan meningkatkan keterampilan Anda!
                             </p>
-                            <a href="registrasi.html" className="btn_3">
+                            <a href="/registrasi" className="btn_3">
                             Create an Account
                             </a>
                         </div>
@@ -75,7 +75,7 @@ const SectionLogin=() => {
                             </div>
                             <div className="col-md-12 form-group">
                                 <div className="text-center">
-                                <a href="index.html" className="btn_3">
+                                <a href="/" className="btn_3">
                                     Log In
                                 </a>
                                 </div>

@@ -126,7 +126,7 @@ const SectionArea = () => {
                                 </tbody>
                             </table>
                             <div className="checkout_btn_inner float-right">
-                                <a className="btn_1 checkout_btn_1" href="CheckoutPage">
+                                <a className="btn_1 checkout_btn_1" href="/checkout">
                                     Proceed to checkout
                                 </a>
                             </div>

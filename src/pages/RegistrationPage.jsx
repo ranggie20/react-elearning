@@ -91,7 +91,7 @@ const IsiRegistrasi=() => {
                             </div>
                             <div className="col-md-12 form-group">
                                 <div className="text-center">
-                                <a href="login.html" className="btn_3">
+                                <a href="/login" className="btn_3">
                                     Sign Up
                                 </a>
                                 </div>

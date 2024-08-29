@@ -1,4 +1,6 @@
-import React from 'react' 
+import React from 'react'
+import PopularItemsList from '../layouts/components/PopularItemsList'
+
 
 const SectionName = () => {
   return (
@@ -21,7 +23,7 @@ const SectionName = () => {
 const SectionAbout = () => {
     return ( 
         <>
-            <div className="about-details section-padding30">
+            <div className="about-details section-padding30" style={{paddingTop: "4rem"}}>
                 <div className="container">
                     <div className="row">
                         <div className="offset-xl-1 col-lg-8">

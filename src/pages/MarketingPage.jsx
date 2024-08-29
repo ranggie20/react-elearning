@@ -113,7 +113,7 @@ const MarketingCourse=() => {
                         <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                             <div className="single-popular-items mb-50 text-center">
                             <div className="popular-img">
-                                <a href="platform_details.html">
+                                <a href="/">
                                 <img src="assets/img/gallery/tiktok.jpeg" alt="" />
                                 </a>
                                 <div className="img-cap">
@@ -125,7 +125,7 @@ const MarketingCourse=() => {
                             </div>
                             <div className="popular-caption">
                                 <h3>
-                                <a href="platform_details.html"> TikTok Marketing </a>
+                                <a href="/"> TikTok Marketing </a>
                                 </h3>
                                 <span>$ 5</span>
                             </div>
@@ -134,7 +134,7 @@ const MarketingCourse=() => {
                         <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                             <div className="single-popular-items mb-50 text-center">
                             <div className="popular-img">
-                                <a href="strategi_mark_details.html">
+                                <a href="/">
                                 <img src="assets/img/gallery/strategy.jpeg" alt="" />
                                 </a>
                                 <div className="img-cap">
@@ -146,7 +146,7 @@ const MarketingCourse=() => {
                             </div>
                             <div className="popular-caption">
                                 <h3>
-                                <a href="strategi_mark_details.html"> Strategy Marketing </a>
+                                <a href="/"> Strategy Marketing </a>
                                 </h3>
                                 <span> $ 7 </span>
                             </div>
@@ -155,7 +155,7 @@ const MarketingCourse=() => {
                         <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                             <div className="single-popular-items mb-50 text-center">
                             <div className="popular-img">
-                                <a href="bisnis_details.html">
+                                <a href="/">
                                 <img src="assets/img/gallery/bisnis.jpeg" alt="" />
                                 </a>
                                 <div className="img-cap">
@@ -167,7 +167,7 @@ const MarketingCourse=() => {
                             </div>
                             <div className="popular-caption">
                                 <h3>
-                                <a href="bisnis_details.html"> Pengelolaan Bisnis </a>
+                                <a href="/"> Pengelolaan Bisnis </a>
                                 </h3>
                                 <span> $ 10 </span>
                             </div>
