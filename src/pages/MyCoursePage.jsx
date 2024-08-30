@@ -62,20 +62,19 @@ const DetailCourse=() => {
                         </div>
                     </div>
                     </div>
-                    {/* Button */}
                 </div>
             </div>
         </>
     )
 }
 
-const MyCoursePage=() => {
-    return(
+const MyCoursePage = () => {
+    return (
         <>
-        <CourseKu/>
-        <DetailCourse/>
+            <CourseKu/>
+            <DetailCourse/>
         </>
-    )
-}
+    );
+};
 
 export default MyCoursePage

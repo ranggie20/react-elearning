@@ -62,3 +62,12 @@
     padding-bottom: 20px;
   }
 }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    flex-basis: 33.33%;
+}

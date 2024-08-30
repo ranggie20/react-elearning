@@ -1,4 +1,5 @@
 import React from 'react'
+import PopularItemsList from '../layouts/components/PopularItemsList';
 
 const SectionName = () => {
 	return (
@@ -20,160 +21,19 @@ const SectionName = () => {
     )
 }
 
-const SectionCourse = () => {
-	return(
-		<>
-			<section className="popular-items latest-padding">
-				<div className="container">
-					<div className="row product-btn justify-content-between mb-40">
-						<div className="grid-list-view"></div>
-						</div>
-							<div className="properties__button">
-								<nav>
-									<div className="nav nav-tabs" id="nav-tab" role="tablist">
-										<a
-											className="nav-item nav-link active"
-											id="nav-home-tab"
-											data-toggle="tab"
-											href="#nav-home"
-											role="tab"
-											aria-controls="nav-home"
-											aria-selected="true">
-											Web Development
-										</a>
-										<a
-											className="nav-item nav-link"
-											id="nav-profile-tab"
-											data-toggle="tab"
-											href="#nav-profile"
-											role="tab"
-											aria-controls="nav-profile"
-											aria-selected="true">
-											Game Development
-										</a>
-										<a
-											className="nav-item nav-link"
-											id="nav-contact-tab"
-											data-toggle="tab"
-											href="#nav-contact"
-											role="tab"
-											aria-controls="nav-contact"
-											aria-selected="true">
-											Programming Language
-										</a>
-									</div>
-								</nav>
-								<div className="tab-content" id="nav-tabContent">
-									<div
-										className="tab-pane fade show active"
-										href="nav-home"
-										role="tabpanel"
-										aria-labelledby="nav-home-tab">
-										<h2>Web Development</h2>
-									</div>
-									<div
-										className="tab-pane fade"
-										href="nav-profile"
-										role="tabpanel"
-										aria-labelledby="nav-profile-tab">
-										<h2>Game Development</h2>
-									</div>
-									<div
-										className="tab-pane fade"
-										href="nav-contact"
-										role="tabpanel"
-										aria-labelledby="nav-contact-tab">
-										<h2>Programming Language</h2>
-									</div>
-								</div>
-							</div>
-							<div className="tab-content" id="nav-tabContent">
-								<div
-									className="tab-pane fade show active"
-									id="nav-home"
-									role="tabpanel"
-									aria-labelledby="nav-home-tab">
-									<div className="row">
-										<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-												<div className="single-popular-items mb-50 text-center">
-													<div className="popular-img">
-														<a href="/">
-															<img src="assets/img/gallery/html.jpeg" alt="" />
-														</a>
-														<div className="img-cap">
-															<span>Add to cart</span>
-														</div>
-														<div className="favorit-items">
-															<span className="flaticon-heart" style={{ color: "white" }} />
-														</div>
-													</div>
-												<div className="popular-caption">
-												<h3>
-													<a href="/"> Web Development </a>
-												</h3>
-												<span>$ 5</span>
-										</div>
-									</div>
-								</div>
-								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-									<div className="single-popular-items mb-50 text-center">
-									<div className="popular-img">
-										<a href="/">
-										<img src="assets/img/gallery/java.jpeg" alt="" />
-										</a>
-										<div className="img-cap">
-										<span>Add to cart</span>
-										</div>
-										<div className="favorit-items">
-										<span className="flaticon-heart" style={{ color: "white" }} />
-										</div>
-									</div>
-									<div className="popular-caption">
-										<h3>
-										<a href="/"> Java </a>
-										</h3>
-										<span>$ 7</span>
-									</div>
-									</div>
-								</div>
-								<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-									<div className="single-popular-items mb-50 text-center">
-										<div className="popular-img">
-											<a href="/">
-												<img src="assets/img/gallery/gallery1.jpeg" alt="" />
-											</a>
-											<div className="img-cap">
-												<span>Add to cart</span>
-										</div>
-										<div className="favorit-items">
-											<span className="flaticon-heart" style={{ color: "white" }} />
-										</div>
-										</div>
-											<div className="popular-caption">
-												<h3>
-												<a href="/"> Basic Game Development </a>
-												</h3>
-												<span> $ 15 </span>
-											</div>
-										</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-		</>
-	)
-}
-
 const DevelopmentPage = () => {
-	return (
-		<>
-			<SectionName/>
-			<SectionCourse/>
-		</>
-	)
-}
+    const developmentsItems = [
+        { image: 'assets/img/gallery/gallery1.jpeg', title: 'Basics of Game Development', price: 35, url: '/' },
+        { image: 'assets/img/gallery/java.jpeg', title: 'Java Programming', price: 25, url: '/' },
+        { image: 'assets/img/gallery/html.jpeg', title: 'Web Development', price: 10, url: '/' },
+    ];
+
+    return (
+        <>
+            <SectionName/>
+            <PopularItemsList items={developmentsItems} />
+        </>
+    );
+};
 
 export default DevelopmentPage

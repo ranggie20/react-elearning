@@ -1,4 +1,5 @@
 import React from 'react'
+import PopularItemsList from '../layouts/components/PopularItemsList';
 
 const SliderArea = () => {
 	return (
@@ -109,155 +110,39 @@ const SectionNewProduct = () => {
 		</>
 	)
 }
-
-const SectionPopularCourse = () => {
-	return (
+ const Popular =() => {
+	return(
 		<>
-			<div className="popular-items">
-				<div className="container">
-					{/* Section tittle */}
-					<div className="row justify-content-center">
-						<div className="col-xl-7 col-lg-8 col-md-10">
-							<div className="section-tittle mb-70 text-center">
-								<h2>Popular Course</h2>
-								<p>
-									Explore our most popular courses, carefully curated to enhance your
-									skills and knowledge in the most sought-after fields!
-								</p>
-							</div>
-						</div>
+		<div className='container py-5'>
+			<div className="row">
+				<div className="col-xl-12">
+					<div className="section-tittle mb-70">
+						<h2>Popular Course</h2>
 					</div>
-						<div className="row">
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-popular-items mb-50 text-center">
-								<div className="popular-img">
-									<img src="assets/img/gallery/popular1.png" alt="" />
-									<div className="img-cap">
-										<span>Add to cart</span>
-									</div>
-									<div className="favorit-items">
-										<span className="flaticon-heart" />
-									</div>
-								</div>
-								<div className="popular-caption">
-									<h3>
-									<a href="product_details.html">Basics of Game Development</a>
-									</h3>
-									<span>$ 35</span>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-popular-items mb-50 text-center">
-								<div className="popular-img">
-									<img src="assets/img/gallery/popular2.png" alt="" />
-									<div className="img-cap">
-										<span>Add to cart</span>
-									</div>
-									<div className="favorit-items">
-										<span className="flaticon-heart" />
-									</div>
-								</div>
-								<div className="popular-caption">
-									<h3>
-									<a href="product_details.html">Cyber Security</a>
-									</h3>
-									<span>$ 25</span>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-popular-items mb-50 text-center">
-								<div className="popular-img">
-									<img src="assets/img/gallery/popular3.png" alt="" />
-									<div className="img-cap">
-										<span>Add to cart</span>
-									</div>
-									<div className="favorit-items">
-										<span className="flaticon-heart" />
-									</div>
-								</div>
-								<div className="popular-caption">
-									<h3>
-									<a href="product_details.html">Windows Server</a>
-									</h3>
-									<span>$ 10</span>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-popular-items mb-50 text-center">
-								<div className="popular-img">
-									<img src="assets/img/gallery/popular4.png" alt="" />
-									<div className="img-cap">
-										<span>Add to cart</span>
-									</div>
-									<div className="favorit-items">
-										<span className="flaticon-heart" />
-									</div>
-								</div>
-								<div className="popular-caption">
-									<h3>
-									<a href="product_details.html">Google Analytics</a>
-									</h3>
-									<span>$ 10</span>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-popular-items mb-50 text-center">
-								<div className="popular-img">
-									<img src="assets/img/gallery/popular5.png" alt="" />
-									<div className="img-cap">
-										<span>Add to cart</span>
-									</div>
-									<div className="favorit-items">
-										<span className="flaticon-heart" />
-									</div>
-								</div>
-								<div className="popular-caption">
-									<h3>
-									<a href="product_details.html">Marketing Strategy</a>
-									</h3>
-									<span>$ 16</span>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-popular-items mb-50 text-center">
-								<div className="popular-img">
-									<img src="assets/img/gallery/popular6.png" alt="" />
-									<div className="img-cap">
-										<span>Add to cart</span>
-									</div>
-									<div className="favorit-items">
-										<span className="flaticon-heart" />
-									</div>
-								</div>
-								<div className="popular-caption">
-									<h3>
-									<a href="product_details.html">Arduino</a>
-									</h3>
-									<span>$ 18</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					{/* Button */}
 				</div>
 			</div>
+		</div>
 		</>
 	)
-}	
-
+ }
 const HomePage = () => {
-	return (
-		<>
-			<SliderArea />
-			<SectionNewProduct />
-			<SectionPopularCourse/>
-		</>
-	)
-}
+    const CourseItems = [
+        { image: 'assets/img/gallery/popular1.png', title: 'Basics of Game Development', price: 35, url: 'basic_game_details.html' },
+        { image: 'assets/img/gallery/popular2.png', title: 'Cyber Security', price: 25, url: 'cyber_security_details.html' },
+        { image: 'assets/img/gallery/popular3.png', title: 'Windows Server', price: 10, url: 'windows_details.html' },
+        { image: 'assets/img/gallery/popular4.png', title: 'Google Analytics', price: 10, url: 'google_analytics_details.html' },
+        { image: 'assets/img/gallery/popular5.png', title: 'Marketing Strategy', price: 16, url: 'strategi_mark_details.html' },
+        { image: 'assets/img/gallery/popular6.png', title: 'Arduino', price: 18, url: 'microcontroller_details.html' }
+    ];
+
+    return (
+        <>
+            <SliderArea/>
+			<SectionNewProduct/>
+			<Popular/>
+            <PopularItemsList items={CourseItems} />
+        </>
+    );
+};
 
 export default HomePage

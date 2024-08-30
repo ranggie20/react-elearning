@@ -25,16 +25,16 @@ const SectionFooter = () => {
 								<h4>Quick Links</h4>
 								<ul>
 								<li>
-									<a href="about.html">About</a>
+									<a href="/about">About</a>
 								</li>
 								<li>
-									<a href="IT&Software.html"> IT &amp; Software </a>
+									<a href="/software"> IT & Software </a>
 								</li>
 								<li>
-									<a href="development.html"> Development </a>
+									<a href="/development"> Development </a>
 								</li>
 								<li>
-									<a href="marketing.html"> Marketing </a>
+									<a href="/marketing"> Marketing </a>
 								</li>
 								</ul>
 							</div>
