@@ -22,6 +22,7 @@ import CategoryPage from './pages/CategoryPage';
 import CourseDetailPage from './pages/CourseDetailPage';
 import ManageCoursesPage from './pages/ManageCoursesPage';
 import AddCoursePage from './pages/AddCoursePage';
+import EditCoursePage from './pages/EditCoursePage';
 import Error404 from './pages/404Page';
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
             {/* Manage Courses */}
             <Route path="/manage/courses" element={<ManageCoursesPage/>}/>
             <Route path="/manage/courses/tambah" element={<AddCoursePage/>}/>
+            <Route path="/manage/courses/:id" element={<EditCoursePage/>}/>
 
             <Route path='*' element={<Error404/>}/>
           </Route>
