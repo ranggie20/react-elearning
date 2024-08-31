@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import DevelopmentPage from './pages/DevelopmentPage';
 import MarketingPage from './pages/MarketingPage';
@@ -20,6 +20,8 @@ import Test from './pages/Custom'
 
 import CategoryPage from './pages/CategoryPage';
 import CourseDetailPage from './pages/CourseDetailPage';
+import ManageCoursesPage from './pages/ManageCoursesPage';
+import AddCoursePage from './pages/AddCoursePage';
 import Error404 from './pages/404Page';
 
 function App() {
@@ -47,6 +49,11 @@ function App() {
             <Route path="/Custom" element={<Test/>}/>
             <Route path="/category/:id" element={<CategoryPage/>}/>
             <Route path="/course/:id" element={<CourseDetailPage/>}/>
+
+            {/* Manage Courses */}
+            <Route path="/manage/courses" element={<ManageCoursesPage/>}/>
+            <Route path="/manage/courses/tambah" element={<AddCoursePage/>}/>
+
             <Route path='*' element={<Error404/>}/>
           </Route>
         </Routes>
