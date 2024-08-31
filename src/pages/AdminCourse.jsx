@@ -113,12 +113,6 @@ const SectionProfile = () => {
               >
                 Save Changes
               </button>
-              <button
-                className="bg-danger text-white hover:bg-danger/80 rounded-lg p-2"
-                onClick={handleDelete}
-              >
-                Delete
-              </button>
             </div>
           </div>
         </div>

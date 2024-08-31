@@ -5,7 +5,8 @@ const SectionProfile = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [language, setLanguage] = useState('');
-   
+    const [foto,setFoto] = useState('')
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log('Submitted:', { firstName, lastName, language});
@@ -22,7 +23,7 @@ const SectionProfile = () => {
                             <img
                                 aria-hidden="true"
                                 alt="Profile Picture"
-                                src="https://placehold.co/100x100"
+                                src={foto}
                                 className="border border-border mr-4"
                                 style={{ borderRadius: 999 }}
                             />
