@@ -1,6 +1,6 @@
 import axios from "../api/axios";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LoginName = () => {
   return (
@@ -23,21 +23,29 @@ const LoginName = () => {
 };
 
 const SectionLogin = () => {
-    const navigate = useNavigate()
-
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("")
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
 
-        try {
-            await axios.post("/user/sign-in", { nama: email, password: password }, { withCredentials: true })
+    try {
+      setError("")
+      await axios.post("/user/sign-in", { nama: email, password: password }, { withCredentials: true })
 
-            navigate("/")
-        } catch (e) {
-            console.error(e)
-        }
+      window.location.href = "/"
+    } catch (e) {
+      const errorResponse = e.response
+
+      let error = e.message
+      if (errorResponse) {
+        error = e.response.data.message
+      }
+
+      setError(error)
+    }
 	};
 
   return (
@@ -99,6 +107,13 @@ const SectionLogin = () => {
 												onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
+                    { error ? (
+                      <div className="col-md-12">
+                        <div className="alert alert-danger">
+                          { error }
+                        </div>
+                      </div>
+                    ) : "" }
                     <div className="col-md-12 form-group">
                       <div className="text-center">
                         <button type="submit" className="btn_3">

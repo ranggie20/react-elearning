@@ -30,46 +30,60 @@ import ListTeacher from './pages/ListTeacher';
 import ListUser from './pages/ListUser';
 import AdminListCourse from './pages/AdminListCourse'
 import AdminListCategory from './pages/AdminListCategory';
+import CheckCookie from './components/CheckCookie';
 
 function App() {
-
   return (
     <>
       <Router>
         <Routes>
           <Route path="/" element={<DefaultLayout/>}>
-            <Route index element={<HomePage/>} />
-            <Route path="/development" element={<DevelopmentPage/>} />
-            <Route path="/about" element={<AboutPage/>} />
-            <Route path="/cart" element={<CartPage/>} />
-            <Route path="/marketing" element={<MarketingPage/>}/>
-            <Route path="/ourteam" element={<OurTeamPage/>}/>
-            <Route path="/software" element={<SoftwarePage/>}/>
-            <Route path="/checkout" element={<CheckoutPage/>}/>
-            <Route path="/wishlist" element={<WishlistPage/>}/>
-            <Route path="/login" element={<LoginPage/>}/>
-            <Route path="/registrasi" element={<RegistrationPage/>}/>
-            <Route path="/mycourse" element={<MyCoursePage/>}/>
-            <Route path="/profile" element={<ProfilePage/>}/>
-            <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
-            <Route path="/category/:id" element={<CategoryPage/>}/>
-            <Route path="/course/:id" element={<CourseDetailPage/>}/>
+            <Route element={<CheckCookie roles={["student", "admin", "teacher"]} override />}>
+              <Route index element={<HomePage/>} />
+              <Route path="/about" element={<AboutPage/>} />
+              <Route path="/ourteam" element={<OurTeamPage/>}/>
+              <Route path="/login" element={<LoginPage/>}/>
+              <Route path="/registrasi" element={<RegistrationPage/>}/>
+              <Route path="/category/:id" element={<CategoryPage/>}/>
+              <Route path="/course/:id" element={<CourseDetailPage/>}/>
 
+              <Route path="/development" element={<DevelopmentPage/>} />
+              <Route path="/marketing" element={<MarketingPage/>}/>
+              <Route path="/software" element={<SoftwarePage/>}/>
+            </Route>
+
+            <Route element={<CheckCookie roles={["student"]} />}>
+              <Route path="/cart" element={<CartPage/>} />
+              <Route path="/checkout" element={<CheckoutPage/>}/>
+              <Route path="/wishlist" element={<WishlistPage/>}/>
+              <Route path="/mycourse" element={<MyCoursePage/>}/>
+              <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
+            </Route>
+
+            <Route element={<CheckCookie roles={["student", "admin", "teacher"]} />}>
+              <Route path="/profile" element={<ProfilePage/>}/>
+            </Route>
+            
             {/* Manage Courses */}
-            <Route path="/manage/courses" element={<ManageCoursesPage/>}/>
-            <Route path="/manage/courses/tambah" element={<AddCoursePage/>}/>
-            <Route path="/manage/courses/:id" element={<EditCoursePage/>}/>
+            <Route element={<CheckCookie roles={["admin", "teacher"]} />}>
+              <Route path="/manage/courses" element={<ManageCoursesPage/>}/>
+              <Route path="/manage/courses/tambah" element={<AddCoursePage/>}/>
+              <Route path="/manage/courses/:id" element={<EditCoursePage/>}/>
+            </Route>
 
             {/* Admin Pages */}
-            <Route path="/admin-category" element={<AdminCategory/>}/>
-            <Route path="/admin-course" element={<AdminCourse/>}/>
+            <Route element={<CheckCookie roles={["admin"]} />}>
+              <Route path="/admin-category" element={<AdminCategory/>}/>
+              <Route path="/admin-course" element={<AdminCourse/>}/>
+
+              <Route path="/listtransaksi" element={<ListTransaksi/>} />
+              <Route path="/listteacher" element={<ListTeacher/>} />
+              <Route path="/listuser" element={<ListUser/>} />
+              <Route path="/listcourse" element={<AdminListCourse/>} />
+              <Route path="/listcategory" element={<AdminListCategory/>} />
+            </Route>
 
             <Route path='*' element={<Error404/>}/>
-            <Route path="/listtransaksi" element={<ListTransaksi/>} />
-            <Route path="/listteacher" element={<ListTeacher/>} />
-            <Route path="/listuser" element={<ListUser/>} />
-            <Route path="/listcourse" element={<AdminListCourse/>} />
-            <Route path="/listcategory" element={<AdminListCategory/>} />
           </Route>
         </Routes>
       </Router>
