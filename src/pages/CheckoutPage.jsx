@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Button, Card } from "react-bootstrap";
+import axios from "axios";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const Sweetalert = withReactContent(Swal)
 
 const SectionCheckout = () => {
   return (
@@ -80,51 +85,55 @@ const ReturningCustomer = () => {
 };
 
 const MyOrderList = () => {
+	const [selectedPayment, setSelectedPayment] = useState(0)
 
-	const totalOrderPrice = () => {
-		return orders.reduce((total, order) => total + order.price, 0);
+	const [orders, setOrders] = useState([])
+	const [paymentMethods, setPaymentMethods] = useState([])
+    const [subTotal, setSubTotal] = useState("0")
+
+    const fetchCartItems = async () => {
+        try {
+            const response = await axios.get("http://localhost:3000/cart/cartpage", { withCredentials: true })
+
+            setOrders(response.data.data)
+
+            setSubTotal(response.data.data.reduce((acc, item) => acc + item.total_amount, 0))
+            console.log(subTotal)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+	const fetchPaymentMethods = async () => {
+		try {
+			const response = await axios.get("http://localhost:3000/payment-method/get-paymentmethod", { withCredentials: true })
+
+			setPaymentMethods(response.data.data)
+		} catch (e) {
+			console.error(e)
+		}
 	}
 
-	const orders = [
-		{
-			course_id: 1,
-			course_name: "Cyber Security",
-			price: 8,
-		},
-		{
-			course_id: 2,
-			course_name: "Bussines Intelligence",
-			price: 10,
-		},
-		{
-			course_id: 3,
-			course_name: "Digital Marketing",
-			price: 6,
-		}
-	]
+    useEffect(() => {
+        fetchCartItems()
+		fetchPaymentMethods()
+    }, [])
 
-	const paymentMethods = [
-		{
-			id: 1,
-			paymentMethod: 'Debit/Credit',
-		},
-		{
-			id: 2,
-			paymentMethod: 'E-Wallet',
-		},
-		{
-			id: 3,
-			paymentMethod: 'Bank Transfer',
-		},
-		{
-			id: 4,
-			paymentMethod: 'Virtual Account',
-		}
-	]
+	async function handleCheckout() {
+		// Handle checkout
+		// Create the payment
+		await axios.post("http://localhost:3000/payment/create-payment", {
+			payment_method_id: parseInt(selectedPayment)
+		}, { withCredentials: true })
 
-	function handleCheckout() {
-		// console.log('Checkout')
-		alert('Checkout')
+		// Create the subscriptions
+		await axios.post("http://localhost:3000/subscription/create-subscription", {}, { withCredentials: true })
+
+		Sweetalert.fire({
+			icon: "success",
+			title: "Pembelian berhasil",
+			text: "Selamat belajar!"
+		})
 	}
 
 	return (
@@ -139,7 +148,7 @@ const MyOrderList = () => {
 				</li>
 				{orders.map((order) => (
 					<li key={order.course_id}>
-						<Link to="#">
+						<Link to={`/course/${order.course_id}`}>
 							{order.course_name}
 							<span>${order.price}</span>
 						</Link>
@@ -157,7 +166,7 @@ const MyOrderList = () => {
 							fontWeight: "bolder"
 						}}>
 						Total
-						<span>$ {totalOrderPrice()}</span>
+						<span>$ {subTotal}</span>
 					</Link>
 				</li>
 			</ul>
@@ -175,17 +184,17 @@ const MyOrderList = () => {
 					</Link>
 				</li>
 			</ul>
-			{paymentMethods.map((item,index) => (
-				<div key={item.id} className="payment_methode">
+			{paymentMethods.map((item) => (
+				<div key={item.payment_method_id} className="payment_methode">
 					<div className="radion_btn">
-						<input type="radio" id={`f-option15-${index}`} name="payment_method" />
-						<label htmlFor={`f-option15-${index}`}> {item.paymentMethod} </label>
+						<input type="radio" id={`f-option15-${item.payment_method_id}`} name="payment_method" value={item.payment_method_id} checked={item.payment_method_id == selectedPayment} onChange={(e) => setSelectedPayment(e.target.value)} />
+						<label htmlFor={`f-option15-${item.payment_method_id}`}> {item.payment_method_name} </label>
 						<div className="check" />
 					</div>
 				</div>
 			))}
-			<button className="btn_3 w-100" onClick={handleCheckout}>
-				Proceed to Paypal
+			<button className="btn_3 w-100" onClick={handleCheckout} disabled={selectedPayment == 0}>
+				Order Course(s)
 			</button>
 		</div>
 	)

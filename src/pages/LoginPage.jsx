@@ -1,5 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginName = () => {
   return (
@@ -22,12 +23,21 @@ const LoginName = () => {
 };
 
 const SectionLogin = () => {
+    const navigate = useNavigate()
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
-	const handleLogin = (e) => {
-		console.log(email, password);
+	const handleLogin = async (e) => {
 		e.preventDefault();
+
+        try {
+            await axios.post("http://localhost:3000/user/sign-in", { nama: email, password: password }, { withCredentials: true })
+
+            navigate("/")
+        } catch (e) {
+            console.error(e)
+        }
 	};
 
   return (
