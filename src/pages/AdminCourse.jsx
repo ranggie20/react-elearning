@@ -7,25 +7,25 @@ const SectionProfile = () => {
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('');
     const [price, setPrice] = useState('');
-    const [thumbnail, setThumbnail] = useState('');
-    const [iconPath, setIconPath] = useState('');
+
+    const [newthumbnail, setNewThumbnail] = useState('');
+    const [newiconPath, setNewIconPath] = useState('');
+
   
     const handleSaveChanges = () => {
         console.log('Saving changes:', {
-          courseName,
-          description,
-          category,
-          price,
-          thumbnail,
-          iconPath,
-        });
+          courseName, description,category,price,newthumbnail,newiconPath });
       };
-
-      const handleDelete = () => {
-        // Logic untuk menghapus course
-        console.log('Deleting course');
-      }
-  
+      const handleThumbnailChange = (event) => {
+        const selectedPhoto = event.target.files[0];
+        setNewThumbnail(selectedPhoto);
+      };
+      const handleIconPathChange = (event) => {
+        const selectedPhoto = event.target.files[0];
+        setNewIconPath(selectedPhoto);
+      };
+    
+      
       return (
         <div className="container">
           <div className="max-w-md mx-auto p-4 bg-card rounded-lg shadow-md">
@@ -79,33 +79,21 @@ const SectionProfile = () => {
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
-    
+            
             <div className="mb-4">
-              <label className="block text-muted-foreground" htmlFor="thumbnail">
-                Thumbnail URL
-              </label>
-              <input
-                type="text"
-                id="thumbnail"
-                className="form-control"
-                value={thumbnail}
-                onChange={(e) => setThumbnail(e.target.value)}
-              />
+                <div className="block text-muted-foreground mb-2">Thumbnail URL</div>
+                <label className="block text-muted-foreground" htmlFor="photo">
+                    <input type="file" onChange={handleThumbnailChange} />  
+                </label>
             </div>
-    
+
             <div className="mb-4">
-              <label className="block text-muted-foreground" htmlFor="icon-path">
-                Icon Path
-              </label>
-              <input
-                type="text"
-                id="iconPath"
-                className="form-control"
-                value={iconPath}
-                onChange={(e) => setIconPath(e.target.value)}
-              />
+                <div className="block text-muted-foreground mb-2"> Icon Path</div>
+                <label className="block text-muted-foreground" htmlFor="photo">
+                    <input type="file" onChange={handleIconPathChange} />  
+                </label>
             </div>
-    
+
             <div className="flex justify-between">
               <button
                 className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg p-2"
@@ -116,10 +104,10 @@ const SectionProfile = () => {
             </div>
           </div>
         </div>
-      );
-    };
+    );
+};
 
-const AdminCategory=()=>{
+const AdminCourse=()=>{
     return(
         <>
         <PageTitle title={'Manage Course'}/>
@@ -128,4 +116,4 @@ const AdminCategory=()=>{
     )
 }
 
-export default AdminCategory
+export default AdminCourse

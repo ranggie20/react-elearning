@@ -7,10 +7,17 @@ const SectionProfile = () => {
     const [language, setLanguage] = useState('');
     const [foto,setFoto] = useState('')
     
+    const [newfoto,setNewFoto] = useState('')
+    
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Submitted:', { firstName, lastName, language});
+        console.log('Submitted:', { firstName, lastName, language, newfoto });
       };
+
+      const handlePhotoChange = (event) => {
+    const selectedPhoto = event.target.files[0];
+    setNewFoto(selectedPhoto);
+  };
 
     return(
         <>
@@ -62,6 +69,18 @@ const SectionProfile = () => {
                         value={language}
                         onChange={(e) => setLanguage(e.target.value)}/>
                     </div>
+                    <div className="mb-4">
+                        <div className="block text-muted-foreground mb-2">Photo</div>
+                            <label className="block text-muted-foreground" htmlFor="photo">
+                                 <input type="file" onChange={handlePhotoChange} />  
+                            </label>                         
+                    </div>
+                    <button
+                        className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg p-2"
+                        onClick={handleSubmit}
+                        >
+                        Submit
+                    </button>
                 </div>               
             </div>
         </>

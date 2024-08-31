@@ -4,13 +4,20 @@ import PageTitle from '../components/PageTitle';
 
 const SectionProfile = () => {
     const [category, setCategory] = useState('');
-    const [iconpath, setIconPath] = useState('');
+
+    const [newiconPath, setNewIconPath] = useState('');
   
-    const handleSubmit = (event) => {
+    const handleSaveChanges = (event) => {
       event.preventDefault();
-      console.log('Submitted:', { category, iconpath });
+      console.log('Submitted:', { category, newiconPath });
       
     };
+
+    const handleIconPathChange = (event) => {
+        const selectedPhoto = event.target.files[0];
+        setNewIconPath(selectedPhoto);
+      };
+    
   
     return (
       <div className="container">
@@ -30,23 +37,19 @@ const SectionProfile = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-muted-foreground" htmlFor="icon-path">
-                Icon Path
-            </label>
-            <input
-              type="text"
-              id="category"
-              className="form-control"
-              value={iconpath}
-              onChange={(e) => setIconPath(e.target.value)}
-            />
-          </div>
-          <button
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg p-2"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
+                <div className="block text-muted-foreground mb-2"> Icon Path</div>
+                <label className="block text-muted-foreground" htmlFor="photo">
+                    <input type="file" onChange={handleIconPathChange} />  
+                </label>
+            </div>
+
+            <div className="flex justify-between">
+                <button
+                    className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg p-2"
+                    onClick={handleSaveChanges}>
+                    Save Changes
+                </button>
+            </div>
         </div>
       </div>
     );
