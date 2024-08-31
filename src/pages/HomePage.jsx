@@ -1,5 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PopularItemsList from '../layouts/components/PopularItemsList';
+
+import CourseComponent from '../components/CourseComponent';
+import CategoryComponent from '../components/CategoryComponent';
+
+import axios from 'axios';
 
 const SliderArea = () => {
 	return (
@@ -50,7 +55,24 @@ const SliderArea = () => {
 	)
 }
 
-const SectionNewProduct = () => {
+const SectionCategory = () => {
+
+	const [categories, setCategories] = useState([]);
+
+	const fetchDataCategory = async function () {
+		try {
+			const response = await axios.get('http://192.168.1.16:3000/public/category');
+			console.log(response.data.data)
+			setCategories(response.data.data);
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+	useEffect(() => {
+		fetchDataCategory()
+	}, [])
+
 	return (
 		<>
 			<section className="new-product-area section-padding30">
@@ -59,50 +81,22 @@ const SectionNewProduct = () => {
 					<div className="row">
 						<div className="col-xl-12">
 							<div className="section-tittle mb-70">
-								<h2>New Course</h2>
+								<h2>Category</h2>
 							</div>
 						</div>
 					</div>
 					<div className="row">
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-new-pro mb-30 text-center">
-								<div className="product-img">
-									<img src="assets/img/gallery/new_product1.png" alt="" />
-								</div>
-								<div className="product-caption">
-									<h3>
-										<a href="product_details.html">IT & Software</a>
-									</h3>
-									<span>$ 20</span>
-								</div>
+						{categories.map((item, index) => (
+							<div
+								key={index}
+								className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+								<CategoryComponent
+									title={item.category_name}
+									image={item.icon}
+									url={`category/${item.category_id}`}
+								/>
 							</div>
-						</div>
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-new-pro mb-30 text-center">
-								<div className="product-img">
-									<img src="assets/img/gallery/new_product2.png" alt="" />
-								</div>
-								<div className="product-caption">
-									<h3>
-										<a href="product_details.html">Development</a>
-									</h3>
-									<span>$ 12</span>
-								</div>
-							</div>
-						</div>
-						<div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-							<div className="single-new-pro mb-30 text-center">
-								<div className="product-img">
-									<img src="assets/img/gallery/new_product3.png" alt="" />
-								</div>
-								<div className="product-caption">
-									<h3>
-										<a href="product_details.html">Digital Marketing</a>
-									</h3>
-									<span>$ 10</span>
-								</div>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</section>
@@ -110,39 +104,58 @@ const SectionNewProduct = () => {
 		</>
 	)
 }
- const Popular =() => {
-	return(
+const Popular = () => {
+	const [populars, setPopulars] = useState([])
+
+	const fetchDataPopular = async () => {
+		try {
+			const response = await axios.get('http://192.168.1.16:3000/public/popular');
+			// console.log(response.data)
+			setPopulars(response.data.data);
+		} catch (error) {
+			console.error('Error fetching data:', error);
+		}
+	}
+
+	useEffect(() => {
+		fetchDataPopular()
+	}, [])
+
+	return (
 		<>
-		<div className='container py-5'>
-			<div className="row">
-				<div className="col-xl-12">
-					<div className="section-tittle mb-70">
-						<h2>Popular Course</h2>
+			<div className='popular-items container py-5'>
+				<div className="row">
+					<div className="col-xl-12">
+						<div className="section-tittle mb-70">
+							<h2>Popular Course</h2>
+						</div>
+
+						<div className="row">
+							{populars.map((item, index) => (
+								<div key={index} className='col-md-4'>									
+									<CourseComponent
+										url={`/course/${item.course_id}`}
+										imageSrc={item.thumbnail}
+										title={item.course_name}
+										price={item.price} />
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		</>
 	)
- }
+}
 const HomePage = () => {
-    const CourseItems = [
-        { image: 'assets/img/gallery/popular1.png', title: 'Basics of Game Development', price: 35, url: 'basic_game_details.html' },
-        { image: 'assets/img/gallery/popular2.png', title: 'Cyber Security', price: 25, url: 'cyber_security_details.html' },
-        { image: 'assets/img/gallery/popular3.png', title: 'Windows Server', price: 10, url: 'windows_details.html' },
-        { image: 'assets/img/gallery/popular4.png', title: 'Google Analytics', price: 10, url: 'google_analytics_details.html' },
-        { image: 'assets/img/gallery/popular5.png', title: 'Marketing Strategy', price: 16, url: 'strategi_mark_details.html' },
-        { image: 'assets/img/gallery/popular6.png', title: 'Arduino', price: 18, url: 'microcontroller_details.html' }
-    ];
 
-    return (
-        <>
-            <SliderArea/>
-			<SectionNewProduct/>
-			<Popular/>
-            <PopularItemsList items={CourseItems} />
-        </>
-    );
+	return (
+		<>
+			<SliderArea />
+			<SectionCategory />
+			<Popular />
+		</>
+	);
 };
 
 export default HomePage

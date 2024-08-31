@@ -15,7 +15,12 @@ import RegistrationPage from './pages/RegistrationPage';
 import MyCoursePage from './pages/MyCoursePage';
 import MyCourseHtml from './pages/MyCourseHtml';
 import ProfilePage from './pages/ProfilePage';
-import MyCourseMarketing from './pages/MyCourseMarketing'
+import MyCourseMarketing from './pages/MyCourseMarketing';
+import Test from './pages/Custom'
+
+import CategoryPage from './pages/CategoryPage';
+import CourseDetailPage from './pages/CourseDetailPage';
+import Error404 from './pages/404Page';
 
 function App() {
 
@@ -39,6 +44,10 @@ function App() {
             <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/mycoursehtml" element={<MyCourseHtml/>} />
             <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
+            <Route path="/Custom" element={<Test/>}/>
+            <Route path="/category/:id" element={<CategoryPage/>}/>
+            <Route path="/course/:id" element={<CourseDetailPage/>}/>
+            <Route path='*' element={<Error404/>}/>
           </Route>
         </Routes>
       </Router>
