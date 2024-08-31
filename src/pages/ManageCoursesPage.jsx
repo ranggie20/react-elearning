@@ -77,7 +77,7 @@ const PageContent = () => {
                   </thead>
                   <tbody>
                     {filteredCourses.map((item, index) => (
-                      <tr>
+                      <tr key={index}>
                         <td>{index + 1}</td>
                         <td><ThumbnailImage src={item.thumbnail} alt={item.course_name} /></td>
                         <td>{item.course_name}</td>
