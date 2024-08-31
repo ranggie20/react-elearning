@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState} from 'react'
 import PageTitle from '../components/PageTitle';
-import axios from 'axios';
+import axios from '../api/axios';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -24,7 +24,7 @@ const SectionProfile = () => {
   
   const fetchCategoriesList = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/public/category")
+      const response = await axios.get("/public/category")
 
       setCategoryList(response.data.data || [])
       setCategory(response.data.data[0] ? response.data.data[0].category_id : 1)
@@ -42,7 +42,7 @@ const SectionProfile = () => {
     formData.append('thumbnail', newthumbnail)
 
     try {
-      await axios.post("http://localhost:3000/teacher/create-course", formData, {
+      await axios.post("/teacher/create-course", formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data"

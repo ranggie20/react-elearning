@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Button, Card } from "react-bootstrap";
-import axios from "axios";
+import axios from "../api/axios";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -93,7 +93,7 @@ const MyOrderList = () => {
 
     const fetchCartItems = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/cart/cartpage", { withCredentials: true })
+            const response = await axios.get("/cart/cartpage")
 
             setOrders(response.data.data)
 
@@ -106,7 +106,7 @@ const MyOrderList = () => {
 
 	const fetchPaymentMethods = async () => {
 		try {
-			const response = await axios.get("http://localhost:3000/payment-method/get-paymentmethod", { withCredentials: true })
+			const response = await axios.get("/payment-method/get-paymentmethod", { withCredentials: true })
 
 			setPaymentMethods(response.data.data)
 		} catch (e) {
@@ -122,12 +122,12 @@ const MyOrderList = () => {
 	async function handleCheckout() {
 		// Handle checkout
 		// Create the payment
-		await axios.post("http://localhost:3000/payment/create-payment", {
+		await axios.post("/payment/create-payment", {
 			payment_method_id: parseInt(selectedPayment)
 		}, { withCredentials: true })
 
 		// Create the subscriptions
-		await axios.post("http://localhost:3000/subscription/create-subscription", {}, { withCredentials: true })
+		await axios.post("/subscription/create-subscription", {}, { withCredentials: true })
 
 		Sweetalert.fire({
 			icon: "success",

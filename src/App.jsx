@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import DevelopmentPage from './pages/DevelopmentPage';
 import MarketingPage from './pages/MarketingPage';
@@ -21,6 +21,9 @@ import AdminCourse from './pages/AdminCourse'
 
 import CategoryPage from './pages/CategoryPage';
 import CourseDetailPage from './pages/CourseDetailPage';
+import ManageCoursesPage from './pages/ManageCoursesPage';
+import AddCoursePage from './pages/AddCoursePage';
+import EditCoursePage from './pages/EditCoursePage';
 import Error404 from './pages/404Page';
 import ListTransaksi from './pages/ListTransaksi';
 import ListTeacher from './pages/ListTeacher';
@@ -51,8 +54,16 @@ function App() {
             <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
             <Route path="/category/:id" element={<CategoryPage/>}/>
             <Route path="/course/:id" element={<CourseDetailPage/>}/>
+
+            {/* Manage Courses */}
+            <Route path="/manage/courses" element={<ManageCoursesPage/>}/>
+            <Route path="/manage/courses/tambah" element={<AddCoursePage/>}/>
+            <Route path="/manage/courses/:id" element={<EditCoursePage/>}/>
+
+            {/* Admin Pages */}
             <Route path="/admin-category" element={<AdminCategory/>}/>
             <Route path="/admin-course" element={<AdminCourse/>}/>
+
             <Route path='*' element={<Error404/>}/>
             <Route path="/listtransaksi" element={<ListTransaksi/>} />
             <Route path="/listteacher" element={<ListTeacher/>} />
