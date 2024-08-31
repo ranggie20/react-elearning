@@ -1,6 +1,6 @@
 import React from 'react'
 import TeamMember from '../components/TeamMember';
-const SectionTeam = () => {
+const Judul = () => {
 	return (
         <>
             <div className="single-slider slider-height2 d-flex align-items-center">
@@ -8,7 +8,7 @@ const SectionTeam = () => {
                     <div className="row">
                         <div className="col-xl-12">
                             <div className="hero-cap text-center">
-                                <h2>Our Team</h2>
+                                <h2>List User</h2>
                             </div>
                         </div>
                     </div>
@@ -18,17 +18,16 @@ const SectionTeam = () => {
     )
 }
 
-const ListTeam = () => {
-    const teamMembers = [
-        { image: "assets/img/team/team-3.jpg", name: "Roséanne Park" },
-        { image: "assets/img/gallery/team_4.jpg", name: "Kim Jisoo"}
+const Pengguna = () => {
+    const userMembers = [
+        { image: "assets/img/team/team-1.jpg", name: "Jennie Kim"},
     ];
 
     return (
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="row g-4">
-                    {teamMembers.map((item, index) => (
+                    {userMembers.map((item, index) => (
                         <TeamMember
                             key={index}
                             image={item.image}
@@ -41,13 +40,13 @@ const ListTeam = () => {
     );
 };
 
-const OurTeamPage = () => {
+const ListUser = () => {
 	return (
 		<>
-			<SectionTeam/>
-            <ListTeam/>
+			<Judul/>
+            <Pengguna/>
 		</>
 	)
 }
 
-export default OurTeamPage
+export default ListUser

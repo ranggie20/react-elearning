@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import ComponentCart from '../layouts/components/ComponentCart';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ComponentCart from '../components/ComponentCart';
 
 const SectionCart = () => {
     return (

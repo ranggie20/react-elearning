@@ -13,7 +13,6 @@ import WishlistPage from './pages/WishlistPage';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import MyCoursePage from './pages/MyCoursePage';
-import MyCourseHtml from './pages/MyCourseHtml';
 import ProfilePage from './pages/ProfilePage';
 import MyCourseMarketing from './pages/MyCourseMarketing';
 import AdminCategory from './pages/AdminCategory'
@@ -26,6 +25,11 @@ import ManageCoursesPage from './pages/ManageCoursesPage';
 import AddCoursePage from './pages/AddCoursePage';
 import EditCoursePage from './pages/EditCoursePage';
 import Error404 from './pages/404Page';
+import ListTransaksi from './pages/ListTransaksi';
+import ListTeacher from './pages/ListTeacher';
+import ListUser from './pages/ListUser';
+import AdminListCourse from './pages/AdminListCourse'
+import AdminListCategory from './pages/AdminListCategory';
 
 function App() {
 
@@ -47,7 +51,6 @@ function App() {
             <Route path="/registrasi" element={<RegistrationPage/>}/>
             <Route path="/mycourse" element={<MyCoursePage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
-            <Route path="/mycoursehtml" element={<MyCourseHtml/>} />
             <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
             <Route path="/category/:id" element={<CategoryPage/>}/>
             <Route path="/course/:id" element={<CourseDetailPage/>}/>
@@ -62,6 +65,11 @@ function App() {
             <Route path="/admin-course" element={<AdminCourse/>}/>
 
             <Route path='*' element={<Error404/>}/>
+            <Route path="/listtransaksi" element={<ListTransaksi/>} />
+            <Route path="/listteacher" element={<ListTeacher/>} />
+            <Route path="/listuser" element={<ListUser/>} />
+            <Route path="/listcourse" element={<AdminListCourse/>} />
+            <Route path="/listcategory" element={<AdminListCategory/>} />
           </Route>
         </Routes>
       </Router>
