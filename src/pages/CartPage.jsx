@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ComponentCart from '../layouts/components/ComponentCart';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const SectionCart = () => {
     return (
@@ -22,28 +24,24 @@ const SectionCart = () => {
 };
 
 const SectionArea = () => {
-    const cartItems = [
-        {
-            image: "assets/img/gallery/cyber.jpeg",
-            title: "Dasar-Dasar Keamanan Siber: Apa saja yang Perlu diKetahui?",
-            price: "$ 8",
-            total: "$ 8"
-        },
-        {
-            image: "assets/img/gallery/html.jpeg",
-            title: "Tutorial HTML: Membuat Halaman Web Pertama Anda",
-            price: "$ 8",
-            total: "$ 8"
-        },
-        {
-            image: "assets/img/gallery/html.jpeg",
-            title: "Tutorial HTML: Membuat Halaman Web Pertama Anda",
-            price: "$ 8",
-            total: "$ 8"
-        }
-    ];
+    const [cartItems, setCartItems] = useState([])
+    const [subTotal, setSubTotal] = useState(0)
 
-    const subtotal = cartItems.reduce((acc, item) => acc + parseFloat(item.total.slice(2)), 0);
+    const fetchCartItems = async () => {
+        try {
+            const response = await axios.get("http://localhost:3000/cart/cartpage", { withCredentials: true })
+
+            setCartItems(response.data.data || [])
+
+            setSubTotal(response.data.data.reduce((acc, item) => acc + item.total_amount, 0))
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    useEffect(() => {
+        fetchCartItems()
+    }, [])
 
     return (
         <section className="cart_area section_padding">
@@ -55,36 +53,44 @@ const SectionArea = () => {
                                 <tr>
                                     <th scope="col">Product</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {cartItems.map((item, index) => (
-                                    <ComponentCart
-                                        key={index}
-                                        image={item.image}
-                                        title={item.title}
-                                        price={item.price}
-                                        total={item.total}
-                                    />
-                                ))}
+                                { cartItems.length > 0 ? (
+                                    cartItems.map((item) => (
+                                        <ComponentCart
+                                            key={item.cart_id}
+                                            image={item.thumbnail}
+                                            title={item.course_name}
+                                            price={item.price}
+                                            total={item.total_amount}
+                                        />
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td className='text-center' colSpan={3}>
+                                            <i>Belum ada course yang dipilih, ayo kita belajar bersama!</i>
+                                        </td>
+                                    </tr>
+                                ) }
                                 <tr>
-                                    <td />
                                     <td />
                                     <td>
                                         <h5>Subtotal</h5>
                                     </td>
                                     <td>
-                                        <h5>${subtotal}</h5>
+                                        <h5>$ {subTotal}</h5>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div className="checkout_btn_inner float-right">
-                            <a className="btn_1 checkout_btn_1" href="/checkout">
-                                Proceed to checkout
-                            </a>
+                            { cartItems.length > 0 ? (
+                                <Link className="btn_1 checkout_btn_1" to="/checkout">
+                                    Proceed to checkout
+                                </Link>
+                            ) : null }
                         </div>
                     </div>
                 </div>

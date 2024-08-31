@@ -16,7 +16,9 @@ import MyCoursePage from './pages/MyCoursePage';
 import MyCourseHtml from './pages/MyCourseHtml';
 import ProfilePage from './pages/ProfilePage';
 import MyCourseMarketing from './pages/MyCourseMarketing';
-import Test from './pages/Custom'
+import AdminCategory from './pages/AdminCategory'
+import AdminCourse from './pages/AdminCourse'
+
 
 import CategoryPage from './pages/CategoryPage';
 import CourseDetailPage from './pages/CourseDetailPage';
@@ -47,7 +49,6 @@ function App() {
             <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/mycoursehtml" element={<MyCourseHtml/>} />
             <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
-            <Route path="/Custom" element={<Test/>}/>
             <Route path="/category/:id" element={<CategoryPage/>}/>
             <Route path="/course/:id" element={<CourseDetailPage/>}/>
 
@@ -55,6 +56,10 @@ function App() {
             <Route path="/manage/courses" element={<ManageCoursesPage/>}/>
             <Route path="/manage/courses/tambah" element={<AddCoursePage/>}/>
             <Route path="/manage/courses/:id" element={<EditCoursePage/>}/>
+
+            {/* Admin Pages */}
+            <Route path="/admin-category" element={<AdminCategory/>}/>
+            <Route path="/admin-course" element={<AdminCourse/>}/>
 
             <Route path='*' element={<Error404/>}/>
           </Route>
