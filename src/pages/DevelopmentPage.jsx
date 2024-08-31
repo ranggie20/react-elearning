@@ -1,6 +1,6 @@
 import React from 'react'
-import PopularItemsList from '../layouts/components/PopularItemsList';
 import CourseComponent from '../components/CourseComponent';
+import PageTitle from '../components/PageTitle'
 
 const SectionCourse = () => {
     
@@ -23,31 +23,11 @@ const SectionCourse = () => {
     )
 }
 
-const SectionName = () => {
-	return (
-        <>
-            <div className="slider-area ">
-				<div className="single-slider slider-height2 d-flex align-items-center">
-					<div className="container">
-						<div className="row">
-							<div className="col-xl-12">
-								<div className="hero-cap text-center">
-									<h2>Development</h2>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-        	</div>
-        </>
-    )
-}
-
 const DevelopmentPage = () => {
 
     return (
         <>
-            <SectionName/>
+             <PageTitle title={'Development'}/>
             <SectionCourse />
         </>
     );
