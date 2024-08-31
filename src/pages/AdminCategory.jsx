@@ -56,7 +56,7 @@ const SectionProfile = () => {
 const AdminCategory=()=>{
     return(
         <>
-        <PageTitle title={'Manage Course'}/>
+        <PageTitle title={'Manage Category'}/>
         <SectionProfile />
         </>
     )

@@ -17,6 +17,7 @@ import MyCourseHtml from './pages/MyCourseHtml';
 import ProfilePage from './pages/ProfilePage';
 import MyCourseMarketing from './pages/MyCourseMarketing';
 import AdminCategory from './pages/AdminCategory'
+import AdminCourse from './pages/AdminCourse'
 
 
 import CategoryPage from './pages/CategoryPage';
@@ -47,7 +48,8 @@ function App() {
             <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
             <Route path="/category/:id" element={<CategoryPage/>}/>
             <Route path="/course/:id" element={<CourseDetailPage/>}/>
-            <Route path="/admin" element={<AdminCategory/>}/>
+            <Route path="/admin-category" element={<AdminCategory/>}/>
+            <Route path="/admin-course" element={<AdminCourse/>}/>
             <Route path='*' element={<Error404/>}/>
           </Route>
         </Routes>
