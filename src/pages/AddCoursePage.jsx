@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 
 const AddCoursePage = () => {
 
@@ -15,7 +15,7 @@ const AddCoursePage = () => {
 
 	const fetchDataCategory = async function () {
 		try {
-			const response = await axios.get('http://localhost:3000/public/category');
+			const response = await axios.get('/public/category');
 			console.log(response.data.data)
 			setCategories(response.data.data);
 		} catch (error) {

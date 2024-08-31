@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState} from 'react'
 import PageTitle from '../components/PageTitle'
-import axios from 'axios'
+import axios from '../api/axios'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -19,7 +19,7 @@ const SectionProfile = () => {
       formData.append("icon", newiconPath)
 
       try {
-        await axios.post("http://localhost:3000/category/create-category", formData, {
+        await axios.post("/category/create-category", formData, {
           withCredentials: true,
           headers: {
             "Content-Type": "multipart/form-data"

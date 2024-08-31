@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../api/axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -32,7 +32,7 @@ const SectionLogin = () => {
 		e.preventDefault();
 
         try {
-            await axios.post("http://localhost:3000/user/sign-in", { nama: email, password: password }, { withCredentials: true })
+            await axios.post("/user/sign-in", { nama: email, password: password }, { withCredentials: true })
 
             navigate("/")
         } catch (e) {

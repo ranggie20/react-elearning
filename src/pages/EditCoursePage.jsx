@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { useParams } from 'react-router-dom';
 
 
@@ -16,7 +16,7 @@ const PageContent = ({courseDetail}) => {
   
 	const fetchDataCategory = async function () {
 		try {
-			const response = await axios.get('http://localhost:3000/public/category');
+			const response = await axios.get('/public/category');
 			console.log(response.data.data)
 			setCategories(response.data.data);
 		} catch (error) {
@@ -129,7 +129,7 @@ const EditCoursePage = () => {
   const fetchDataCourse = async function () {
     try {
       // benerin api nya kalo salah api nya
-      const response = await axios.get(`http://localhost:3000/public/course/${params.id}`);
+      const response = await axios.get(`/public/course/${params.id}`);
       
       if(response.data.code !== 200) {
         console.log(response.data.data)

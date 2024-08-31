@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { Link } from 'react-router-dom';
 import ComponentCart from '../components/ComponentCart';
 
@@ -29,7 +29,7 @@ const SectionArea = () => {
 
     const fetchCartItems = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/cart/cartpage", { withCredentials: true })
+            const response = await axios.get("/cart/cartpage")
 
             setCartItems(response.data.data || [])
 

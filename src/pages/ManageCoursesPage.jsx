@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import axios from '../api/axios';
 import { GoPencil } from "react-icons/go";
 import { Link } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ const PageContent = () => {
 
 	const fetchCourses = async () => {
 		try {
-			const response = await axios.get('http://localhost:3000/public/popular');
+			const response = await axios.get('/public/popular');
 			// console.log(response.data)
 			setCourses(response.data.data);
       setFilteredCourses(response.data.data)
