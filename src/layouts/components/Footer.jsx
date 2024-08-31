@@ -65,7 +65,7 @@ const SectionFooter = () => {
 									<p>
 										Copyright ©2020 All rights reserved | This template is made with{" "}
 										<i className="fa fa-heart" aria-hidden="true" /> by{" "}
-										<Link href=""> DKS </Link>
+										<Link to=""> DKS </Link>
 									</p>
 								</div>
 							</div>

@@ -1,6 +1,6 @@
 import React from 'react'
-import PageTitle from '../components/PageTitle'
 import CourseComponent from '../components/CourseComponent';
+import PageTitle from '../components/PageTitle';
 
 
 const SectionMarketing = () => {
