@@ -1,5 +1,4 @@
 import React from 'react'
-import PopularItemsList from '../layouts/components/PopularItemsList';
 import CourseComponent from '../components/CourseComponent';
 
 const SectionCourse = () => {

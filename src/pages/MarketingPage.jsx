@@ -1,5 +1,4 @@
 import React from 'react'
-import PopularItemsList from '../layouts/components/PopularItemsList';
 import CourseComponent from '../components/CourseComponent';
 
 const SectionMarketing = () => {
@@ -23,7 +22,6 @@ const SectionMarketing = () => {
 }
 
 const MarketingPage = () => {
-	const currency = '$'
 	const marketingItems = [
 		{ image: 'assets/img/gallery/bisnis.jpeg', title: 'Pengelolaan Bisnis', price: 35, url: '/' },
 		{ image: 'assets/img/gallery/strategy.jpeg', title: 'Strategi Marketing', price: 25, url: '/' },
@@ -33,47 +31,13 @@ const MarketingPage = () => {
 	return (
 		<>
 			<SectionMarketing />
-			{/* <PopularItemsList items={marketingItems} /> */}
-
-			<div className='container py-5'>
-				{/* {JSON.stringify(marketingItems)} */}
-
-				<div className='row'>
-					{marketingItems.map((item, index) => (
-						<div className='col-md-4 border'>
-							<div>{JSON.stringify(item)}</div>
-							<div>{item.title}</div>
-							<div>{item.price}</div>
-							<div>{item.url}</div>
-							<div>{item.image}</div>
-						</div>
-					))}
-				</div>
-			</div>
-
 			<div className='container py-5 popular-items'>
-				{/* {JSON.stringify(marketingItems)} */}
-
 				<div className='row'>
 					{marketingItems.map((item, index) => (
 						<div className='col-md-4'>
 							<CourseComponent url={item.url} imageSrc={item.image} title={item.title} price={item.price}/>
 						</div>
 					))}
-				</div>
-			</div>
-
-			<div className='container py-5'>
-				<div className='row'>
-					<div className='col-md-4 border'>
-						a
-					</div>
-					<div className='col-md-4 border'>
-						a
-					</div>
-					<div className='col-md-4 border'>
-						a
-					</div>
 				</div>
 			</div>
 		</>

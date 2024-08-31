@@ -111,37 +111,35 @@ const ProccesCheckout=() => {
                             <h2>Your Order</h2>
                             <ul className="list">
                             <li>
-                                <a href="#">
+                                <Link to="#">
                                 Product
                                 <span>Total</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="cyber_security_details.html">
-                                {" "}
+                                <Link to="/">
                                 Cyber Security
                                 <span className="last">$ 8</span>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="bisnis_details.html">
-                                {" "}
+                                <Link to="*">
                                 Bussines Image Management
                                 <span className="last"> $ 8 </span>
-                                </a>
+                                </Link>
                             </li>
                             </ul>
                             <ul className="list list_2">
                             <li>
-                                <a href="#">
+                                <Link to="*">
                                 Total
                                 <span>$ 16</span>
-                                </a>
+                                </Link>
                             </li>
                             </ul>
                             <ul className="list list_2">
                             <li>
-                                <a href="#"> PAYMENT</a>
+                                <Link to="#"> PAYMENT </Link>
                             </li>
                             </ul>
                             <div className="payment_methode">
@@ -172,9 +170,9 @@ const ProccesCheckout=() => {
                                 <div className="check" />
                             </div>
                             </div>
-                            <a className="btn_3" href="confirmation.html">
+                            <Link className="btn_3" to="">
                                 Proceed to Paypal
-                                </a>
+                                </Link>
                             </div>
                             </div>
                         </div>

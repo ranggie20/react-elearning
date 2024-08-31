@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const CourseKu=() => {
     return(
@@ -25,38 +26,21 @@ const DetailCourse=() => {
         <>
             <div className="popular-items" style={{ paddingTop: "8rem" }}>
                 <div className="container">
-                    {/* Section tittle */}
                     <div className="row">
                     <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
                         <div className="single-popular-items mb-50 text-center">
-                        <a href="/mycoursehtml">
-                            <div className="popular-img">
-                            <img src="assets/img/gallery/new_product2.png" alt="" />
-                            </div>
-                        </a>
-                        <div className="popular-caption">
-                            <h3>
-                            <a href="/mycoursehtml">
-                                Tutorial mebuat halaman web untuk pemula
-                            </a>
-                            </h3>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                        <div className="single-popular-items mb-50 text-center">
-                        <a href="/mycoursemarketing">
+                        <Link href="/mycoursemarketing">
                             <div className="popular-img">
                             <img src="assets/img/gallery/popular5.png" alt="" />
                             </div>
-                        </a>
+                        </Link>
                         <div className="popular-caption">
-                            <a href="/mycoursemarketing"></a>
+                            <Link href="/mycoursemarketing"></Link>
                             <h3>
-                            <a href="/mycoursemarketing" />
-                            <a href="/mycoursemarketing">
+                            <Link href="/mycoursemarketing" />
+                            <Link href="/mycoursemarketing">
                                 Rahasia sukses marketing di era digital
-                            </a>
+                            </Link>
                             </h3>
                         </div>
                         </div>

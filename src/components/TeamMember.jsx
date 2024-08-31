@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TeamMember = ({ image, name, jobDesk }) => {
+const TeamMember = ({ image, name }) => {
     return (
         <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div className="team-item bg-light">
@@ -9,7 +9,6 @@ const TeamMember = ({ image, name, jobDesk }) => {
                 </div>
                 <div className="text-center p-4">
                     <h5 className="mb-0">{name}</h5>
-                    <small>{jobDesk}</small>
                 </div>
             </div>
         </div>

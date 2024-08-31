@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Regis=() => {
     return(
@@ -91,9 +92,9 @@ const IsiRegistrasi=() => {
                             </div>
                             <div className="col-md-12 form-group">
                                 <div className="text-center">
-                                <a href="/login" className="btn_3">
+                                <Link href="/login" className="btn_3">
                                     Sign Up
-                                </a>
+                                </Link>
                                 </div>
                             </div>
                             </form>
