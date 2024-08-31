@@ -23,6 +23,7 @@ import ListTransaksi from './pages/ListTransaksi';
 import ListTeacher from './pages/ListTeacher';
 import ListUser from './pages/ListUser';
 import AdminListCourse from './pages/AdminListCourse'
+import AdminListCategory from './pages/AdminListCategory';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
             <Route path="/listteacher" element={<ListTeacher/>} />
             <Route path="/listuser" element={<ListUser/>} />
             <Route path="/listcourse" element={<AdminListCourse/>} />
+            <Route path="/listcategory" element={<AdminListCategory/>} />
           </Route>
         </Routes>
       </Router>
