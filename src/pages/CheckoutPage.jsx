@@ -132,7 +132,12 @@ const MyOrderList = () => {
 		Sweetalert.fire({
 			icon: "success",
 			title: "Pembelian berhasil",
-			text: "Selamat belajar!"
+			text: "Selamat belajar!",
+			customClass: {
+				confirmButton: "btn btn-success",
+				cancelButton: "btn btn-danger"
+			},
+			buttonsStyling: false
 		})
 	}
 
