@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ComponentCart from '../layouts/components/ComponentCart';
+import axios from 'axios';
 
 const SectionCart = () => {
     return (
@@ -22,28 +23,25 @@ const SectionCart = () => {
 };
 
 const SectionArea = () => {
-    const cartItems = [
-        {
-            image: "assets/img/gallery/cyber.jpeg",
-            title: "Dasar-Dasar Keamanan Siber: Apa saja yang Perlu diKetahui?",
-            price: "$ 8",
-            total: "$ 8"
-        },
-        {
-            image: "assets/img/gallery/html.jpeg",
-            title: "Tutorial HTML: Membuat Halaman Web Pertama Anda",
-            price: "$ 8",
-            total: "$ 8"
-        },
-        {
-            image: "assets/img/gallery/html.jpeg",
-            title: "Tutorial HTML: Membuat Halaman Web Pertama Anda",
-            price: "$ 8",
-            total: "$ 8"
-        }
-    ];
+    const [cartItems, setCartItems] = useState([])
+    const [subTotal, setSubTotal] = useState(0)
 
-    const subtotal = cartItems.reduce((acc, item) => acc + parseFloat(item.total.slice(2)), 0);
+    const fetchCartItems = async () => {
+        try {
+            const response = await axios.get("http://localhost:3000/cart/cartpage", { withCredentials: true })
+
+            setCartItems(response.data.data)
+
+            setSubTotal(response.data.data.reduce((acc, item) => acc + item.total_amount, 0))
+            console.log(subTotal)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    useEffect(() => {
+        fetchCartItems()
+    }, [])
 
     return (
         <section className="cart_area section_padding">
@@ -55,28 +53,26 @@ const SectionArea = () => {
                                 <tr>
                                     <th scope="col">Product</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
                                     <th scope="col">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {cartItems.map((item, index) => (
+                                {cartItems.map((item) => (
                                     <ComponentCart
-                                        key={index}
-                                        image={item.image}
-                                        title={item.title}
+                                        key={item.cart_id}
+                                        image={item.thumbnail}
+                                        title={item.course_name}
                                         price={item.price}
-                                        total={item.total}
+                                        total={item.total_amount}
                                     />
                                 ))}
                                 <tr>
-                                    <td />
                                     <td />
                                     <td>
                                         <h5>Subtotal</h5>
                                     </td>
                                     <td>
-                                        <h5>${subtotal}</h5>
+                                        <h5>$ {subTotal}</h5>
                                     </td>
                                 </tr>
                             </tbody>

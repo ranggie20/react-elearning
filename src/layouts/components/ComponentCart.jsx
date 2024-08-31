@@ -14,20 +14,10 @@ const ComponentCart = ({ image, title, price, total }) => {
                 </div>
             </td>
             <td>
-                <h5>{price}</h5>
+                <h5>$ {price}</h5>
             </td>
             <td>
-                <div className="product_count">
-                   
-                    <input
-                        className="input-number"
-                        type="text"
-                        defaultValue={1}
-                    />
-                </div> 
-            </td>
-            <td>
-                <h5>{total}</h5>
+                <h5>$ {total}</h5>
             </td>
         </tr>
     );
