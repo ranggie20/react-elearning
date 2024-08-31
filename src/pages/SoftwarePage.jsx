@@ -1,27 +1,7 @@
-import React from 'react'
-import PopularItemsList from '../layouts/components/PopularItemsList'
+import PageTitle from '../components/PageTitle'
+import CourseComponent from '../components/CourseComponent';
 
-const SectionSoftware=() => {
-    return(
-        <>
-            <div className="slider-area ">
-                <div className="single-slider slider-height2 d-flex align-items-center">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-xl-12">
-                                <div className="hero-cap text-center">
-                                    <h2> IT & Software </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
-
-const SoftwarePage = () => {
+const SectionSoftware = () => {
     const SoftwareItems = [
         { image: 'assets/img/gallery/microcontroller.jpeg', title: 'Mikrokontroler', price: 35, url: 'basic_game_details.html' },
         { image: 'assets/img/gallery/server.jpeg', title: 'Windows Server', price: 25, url: 'cyber_security_details.html' },
@@ -29,11 +9,27 @@ const SoftwarePage = () => {
     ];
 
     return (
-        <>
-            <SectionSoftware/>
-            <PopularItemsList items={SoftwareItems} />
-        </>
-    );
-};
+        <div className='container popular-items py-5'>
+            <div className="row">
+                {SoftwareItems.map((item,index) => (
+                    <div key={index} className="col-md-4">
+                        <CourseComponent url={item.url} imageSrc={item.image} title={item.title} price={item.price} />
+                    </div>
+                ))}
+            </div>
+        </div>
+    )
+}
+
+
+const SoftwarePage = () => {
+        return (
+            <>
+                <PageTitle title={'IT&Software'}/>
+                <SectionSoftware/>
+            </>
+        )
+}
+
 
 export default SoftwarePage
