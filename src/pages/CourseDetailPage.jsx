@@ -55,9 +55,9 @@ const SectionDetail = () => {
                         <div className="col-lg-8">
                             <div className="single_product_text text-center">
                                 <h3>
-                                    {" "}
+
                                     Strategi Efektif Mengelola <br />
-                                    Reputasi Bisnis Anda{" "}
+                                    Reputasi Bisnis Anda
                                 </h3>
                                 <p>
                                     Video "Strategi Efektif Mengelola Reputasi Bisnis Anda" membahas

@@ -1,5 +1,5 @@
 import React from 'react'
-import ListTeam from '../layouts/components/ListTeam'
+import TeamMember from '../components/TeamMember';
 const SectionTeam = () => {
 	return (
         <>
@@ -17,6 +17,29 @@ const SectionTeam = () => {
         </>
     )
 }
+
+const ListTeam = () => {
+    const teamMembers = [
+        { image: "assets/img/gallery/cyber.jpeg", name: "Jennie Kim", jobDesk: "Designation" },
+    ];
+
+    return (
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-4">
+                    {teamMembers.map((item, index) => (
+                        <TeamMember
+                            key={index}
+                            image={item.image}
+                            name={item.name}
+                            jobDesk={item.jobDesk}
+                        />
+                    ))}
+                </div>    
+            </div>        
+        </div>
+    );
+};
 
 const OurTeamPage = () => {
 	return (

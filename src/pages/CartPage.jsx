@@ -1,5 +1,5 @@
 import React from 'react';
-import ComponentCart from '../layouts/components/ComponentCart';
+import ComponentCart from '../components/ComponentCart';
 
 const SectionCart = () => {
     return (
