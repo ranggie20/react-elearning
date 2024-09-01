@@ -118,3 +118,18 @@
 .gap-5{
   gap: 3rem !important;
 }
+
+
+.in-wishlist{
+  border-color: #FF2020;
+  background: #FF2020;
+  svg{
+    color: #fff;
+  }
+}
+.in-wishlist:hover{
+  background: #ef6464;
+}
+.not-in-wishlist{
+  color: rgb(37, 119, 253);
+}
