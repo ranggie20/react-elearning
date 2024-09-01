@@ -129,12 +129,9 @@ const EditCoursePage = () => {
   const fetchDataCourse = async function () {
     try {
       // benerin api nya kalo salah api nya
-      const response = await axios.get(`/public/course/${params.id}`);
+      const response = await axios.get(`/public/get-course/${params.id}`);
       
-      if(response.data.code !== 200) {
-        console.log(response.data.data)
-        setCourseDetail(response.data.data)
-      }
+      setCourseDetail(response.data.data)
     } catch (error) {
       console.error('Error fetching data:', error);
     }

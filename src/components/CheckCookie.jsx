@@ -16,15 +16,18 @@ const CheckCookie = ({ roles, override }) => {
           role: res.data.data.role
         })
       })
+      .catch(() => {
+        setAuth({})
+      })
       .finally(() => {
         setIsChecking(false)
       })
   }, [])
 
-  return isChecking ? (
+  return isChecking && !override ? (
     <Loading />
-  ) : auth.userID || override ? (
-    roles.includes(auth.role) || override ? (
+  ) : override || auth.userID ? (
+    override || roles.includes(auth.role)  ? (
       <Outlet />
     ) : (
       <Navigate to="/404" replace />

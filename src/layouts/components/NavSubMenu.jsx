@@ -6,7 +6,7 @@ const NavSubMenu = ({subMenu}) => {
     <ul className="submenu">
       {subMenu?.map((item, index) => (
         <li key={index}>
-          <Link to={item.url}>
+          <Link reloadDocument to={item.url}>
             {item.title}
           </Link>
         </li>

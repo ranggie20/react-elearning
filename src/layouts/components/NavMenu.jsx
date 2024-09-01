@@ -1,46 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavMenuItem from "./NavMenuItem";
-import NavSubMenu from "./NavSubMenu";
+import axios from "../../api/axios";
 
 const NavMenu = () => {
-  const menus = [
-    {
-      url: '/',
-      title: 'Home',
-    },
-    {
-      url: '/category',
-      title: 'Category',
-      subMenu: [
-        {
-          url: '/development',
-          title: 'Development'
-        },
-        {
-          url: '/marketing',
-          title: 'Marketing'
-        },
-        { url: '/software',
-          title: 'IT & Software'
-        },
-      ]
-    },
-    {
-      url: '/ourteam',
-      title: 'Our Team'
-    },
-    {
-      url: '/about',
-      title: 'About'
-    },
-  ]
+  const [menuList, setMenuList] = useState()
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get("/public/category")
+
+      setMenuList(response.data.data.map((d) => ({
+        url: `/category/${d.category_id}`,
+        title: d.category_name
+      })) || [])
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
+  useEffect(() => {
+    fetchCategories()
+  }, [])
+
   return (
     <div className="main-menu d-none d-lg-block">
       <nav>
         <ul id="navigation">
-          {menus.map((item, index) => (
-            <NavMenuItem key={index} url={item.url} title={item.title} subMenu={item?.subMenu} />
-          ))}
+          <NavMenuItem url={"/"} title={"Home"} />
+          <NavMenuItem url={"/category"} title={"Category"} subMenu={menuList} />
+          <NavMenuItem url={"/ourteam"} title={"Our Team"} />
+          <NavMenuItem url={"/about"} title={"About"} />
         </ul>
       </nav>
     </div>

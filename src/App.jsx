@@ -31,6 +31,7 @@ import ListUser from './pages/ListUser';
 import AdminListCourse from './pages/AdminListCourse'
 import AdminListCategory from './pages/AdminListCategory';
 import CheckCookie from './components/CheckCookie';
+import CategoryListPage from './pages/CategoryListPage';
 
 function App() {
   return (
@@ -38,12 +39,13 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<DefaultLayout/>}>
-            <Route element={<CheckCookie roles={["student", "admin", "teacher"]} override />}>
+            <Route element={<CheckCookie roles={["student", "admin", "teacher"]} override={true} />}>
               <Route index element={<HomePage/>} />
               <Route path="/about" element={<AboutPage/>} />
               <Route path="/ourteam" element={<OurTeamPage/>}/>
               <Route path="/login" element={<LoginPage/>}/>
               <Route path="/registrasi" element={<RegistrationPage/>}/>
+              <Route path="/category" element={<CategoryListPage/>}/>
               <Route path="/category/:id" element={<CategoryPage/>}/>
               <Route path="/course/:id" element={<CourseDetailPage/>}/>
 

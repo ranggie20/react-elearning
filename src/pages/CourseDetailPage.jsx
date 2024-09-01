@@ -7,27 +7,26 @@ import Swal2 from "sweetalert2";
 import { AuthContext } from "../context/AuthProvider";
 
 const CourseDetailPage = () => {
-  const params = useParams();
-  const [course, setCourse] = useState([]);
+	const params = useParams();
+	const [course, setCourse] = useState([]);
 	const [allCart, setAllCart] = useState([]);
 	const [allWishlist, setAllWishlist] = useState([]);
-  const { auth, destroyAuth } = useContext(AuthContext)
+	const { auth, destroyAuth } = useContext(AuthContext)
 
-  const fetchDataPopular = async () => {
-    try {
-      const response = await axios.get("/public/get-course/" + params.id);
-      console.log(response.data)
-      setCourse(response.data.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+	const fetchDataPopular = async () => {
+		try {
+			const response = await axios.get("/public/get-course/" + params.id);
+			setCourse(response.data.data);
+		} catch (error) {
+			console.error("Error fetching data:", error);
+		}
+	};
 
 
 	
-  const addToCart = async () => {
+	const addToCart = async () => {
 		try {
-			const response = await axios.post('/cart/create-cart', {
+			await axios.post('/cart/create-cart', {
 				course_id: course.course_id,
 				user_id: parseInt(auth.userID),
 				course_name: course.course_name,
@@ -37,29 +36,28 @@ const CourseDetailPage = () => {
 			});
 
 			fetchAllCart()
-			
-      Swal2.fire({
-        icon: "success",
-        title: "Berhasil ditambahkan",
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger"
-        },
-        buttonsStyling: false
-      })
+				
+			Swal2.fire({
+				icon: "success",
+				title: "Berhasil ditambahkan",
+				customClass: {
+				confirmButton: "btn btn-success",
+				cancelButton: "btn btn-danger"
+				},
+				buttonsStyling: false
+			})
 		} catch (error) {
 			console.error('Error fetching data:', error);
-      Swal2.fire({
-        icon: "error",
-        title: "Gagal menambahkan ke keranjang",
-        customClass: {
-          confirmButton: "btn btn-success"
-        },
-        buttonsStyling: false
-      })
+			Swal2.fire({
+				icon: "error",
+				title: "Gagal menambahkan ke keranjang",
+				customClass: {
+				confirmButton: "btn btn-success"
+				},
+				buttonsStyling: false
+			})
 		}
-
-  }
+	}
 
 	const fetchAllCart = async () => {
 		try {
@@ -94,8 +92,10 @@ const CourseDetailPage = () => {
 	}
 
 	const addToWishList = async () => {
+		console.log("PLPL")
+
 		try {
-			const response = await axios.post('/wishlist/create-wishlist', {
+			await axios.post('/wishlist/create-wishlist', {
 				course_id: course.course_id,
 				user_id: parseInt(auth.userID),
 				course_name: course.course_name,
@@ -132,26 +132,24 @@ const CourseDetailPage = () => {
 
   useEffect(() => {
     fetchDataPopular();
-		fetchAllCart();
-		fetchAllWishList();
+	fetchAllCart();
+	fetchAllWishList();
   }, []);
   return (
     <>
       <PageTitle title={course.course_name} />
-			{auth.userID ? <>true</>: <>false</>}
       <DetailComponent
         url={course.url}
         title={course.course_name}
         description={course.course_description}
         price={course.price}
-				addToCart={addToCart}
-				isInCart={allCart.some(item => item.course_id === course.course_id)}
-				isLoggedIn={auth.userID ? true : false}
-				addToWishList={addToWishList}
-				isInWishlist={allWishlist.some(item => {
-					console.log(item,course.course_id)
-					return item.course_id === course.course_id
-				})}
+		addToCart={addToCart}
+		isInCart={allCart.some(item => item.course_id === course.course_id)}
+		isLoggedIn={auth.userID ? true : false}
+		addToWishlist={addToWishList}
+		isInWishlist={allWishlist.some(item => {
+			return item.course_id === course.course_id
+		})}
       />
     </>
   );

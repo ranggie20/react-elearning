@@ -92,7 +92,7 @@ const SectionCategory = () => {
 								className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
 								<CategoryComponent
 									title={item.category_name}
-									image={item.icon}
+									image={`${import.meta.env.VITE_API_URL}/${item.icon}`}
 									url={`category/${item.category_id}`}
 								/>
 							</div>
@@ -135,7 +135,7 @@ const Popular = () => {
 								<div key={index} className='col-md-4'>									
 									<CourseComponent
 										url={`/course/${item.course_id}`}
-										imageSrc={item.thumbnail}
+										imageSrc={`${import.meta.env.VITE_API_URL}/${item.thumbnail}`}
 										title={item.course_name}
 										price={item.price} />
 								</div>

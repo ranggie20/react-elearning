@@ -28,18 +28,18 @@ const HeaderRight = () => {
             <IoSearch className="icon search-icon" />
           </Link>
         </li> */}
-        { auth.userID ? (
+        { auth.userID && auth.role === "student" ? (
           <>
             <li>
               <Link className="icon-link" to="/wishlist">
                 <FaRegHeart className="icon heart-icon" />
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link className="icon-link">
                 <MdNotificationsNone className="icon notification-icon" />
               </Link>
-            </li>
+            </li> */}
           </>
         ) : "" }
         { auth.userID ? (
@@ -54,7 +54,7 @@ const HeaderRight = () => {
             <LuUser2 className="icon user-icon" />
           </Link>
         </li>
-        { auth.userID ? (
+        { auth.userID && auth.role === "student" ? (
           <li>
             <Link className="icon-link" to="/cart">
               <TbShoppingCart className="icon cart-icon" />

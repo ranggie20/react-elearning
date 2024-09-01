@@ -79,7 +79,7 @@ const PageContent = () => {
                     {filteredCourses.map((item, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
-                        <td><ThumbnailImage src={item.thumbnail} alt={item.course_name} /></td>
+                        <td><ThumbnailImage src={`${import.meta.env.VITE_API_URL}/${item.thumbnail}`} alt={item.course_name} /></td>
                         <td>{item.course_name}</td>
                         <td>{item.price}</td>
                         <td>{item.total_enrollments}</td>

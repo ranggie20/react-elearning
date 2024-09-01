@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 const DetailComponent = ({ 
     url, 
@@ -8,26 +9,24 @@ const DetailComponent = ({
     description, 
     price, 
     isInCart=false, 
-    addToCart = () => {}, 
+    addToCart,
     isInWishlist=false, 
-    addToWishlist = () => {}, 
+    addToWishlist, 
     isLoggedIn=false 
   }) => {
   const handleAddToCart = () => {
-    console.log('Add to cart clicked');
     if (isInCart) return;
     addToCart();
   }
 
   const handleAddToWishlist = () => {
-    console.log('Add to wishlist clicked');
     if (isInWishlist) return;
     addToWishlist();
   }
+
   return (
     <div className="product_image_area">
       <div className="container">
-        {isInWishlist ? <>true</> : <>false</>}
         <div className="row justify-content-center">
           <div className="col-lg-4 col-md-6 align-self-center mb-30 event_outer col-md-6 development">
             <div className="events_item">
@@ -52,7 +51,7 @@ const DetailComponent = ({
               <p>{description}</p>
               <div className="card_area">
                 <div className="product_count_area">
-                  <p>{price}</p>
+                  <p>Price: $ {price}</p>
                 </div>
                 <div className='d-flex gap-2 align-items-center justify-content-center'>
                   <div className="add_to_cart mt-0">
@@ -78,9 +77,23 @@ const DetailComponent = ({
                   </div>
                   <div className="wishlist">
                   {isLoggedIn ? (
-                    <button onClick={handleAddToWishlist} className={isInWishlist ? "btn_3 in-wishlist" : `btn_3 not-in-wishlist`} style={{padding: '18px 18px'}}>
-                      {isInWishlist ? <FaHeart size={20}/> : <FaRegHeart size={20}/>}
-                    </button>
+                    isInWishlist ? (
+                      <OverlayTrigger
+                        overlay={
+                          <Tooltip id={`tooltip-wishlist`}>
+                            Already in wishlist
+                          </Tooltip>
+                        }
+                      >
+                        <button className="btn_3 in-wishlist" style={{padding: '18px 18px'}}>
+                          <FaHeart size={20}/>
+                        </button>
+                      </OverlayTrigger>
+                    ) : (
+                      <button onClick={handleAddToWishlist} className="btn_3 not-in-wishlist" style={{padding: '18px 18px'}}>
+                        <FaRegHeart size={20}/>
+                      </button>
+                    )
                   ) : (
                     <Link to="/login" className="btn_3" style={{padding: '14px 14px'}}>
                       <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="30px" width="30px" xmlns="http://www.w3.org/2000/svg" style={{ color: 'black' }}>

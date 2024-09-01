@@ -14,7 +14,7 @@ const SectionCourse = () => {
 		try {
 			const response = await axios.get(`/public/get-category/${params.id}`);
 			console.log("courses",response.data)
-			setCourses(response.data.data);
+			setCourses(response.data.data || []);
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
@@ -29,7 +29,7 @@ const SectionCourse = () => {
             <div className="row">
                 {courses.map((item,index) => (
                     <div key={index} className="col-md-4">
-                        <CourseComponent url={`/course/${item.course_id}`} imageSrc={item.thumbnail.String} title={item.course_name} price={item.price} />
+                        <CourseComponent url={`/course/${item.course_id}`} imageSrc={`${import.meta.env.VITE_API_URL}/${item.thumbnail.String}`} title={item.course_name} price={item.price} />
                     </div>
                 ))}
             </div>
