@@ -1,25 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
-const PageHeader = () => {
-  return (
-    <>
-      <div className="slider-area ">
-        <div className="single-slider slider-height2 d-flex align-items-center">
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-12">
-                <div className="hero-cap text-center">
-                  <h2>Registration</h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+import PageTitle from "../components/PageTitle";
+import axios from "../api/axios";
+import Swal2 from "sweetalert2";
 
 const PageContent = () => {
 	const [name, setName] = useState("");
@@ -27,9 +10,46 @@ const PageContent = () => {
 	const [password, setPassword] = useState("");
 	const [role, setRole] = useState("");
 
-	const handleRegister = (e) => {
+	const handleRegister = async (e) => {
 		console.log(name, email, password, role);
 		e.preventDefault();
+
+		
+    const formData = new FormData()
+		formData.append("nama", name)
+		formData.append("email", email)
+		formData.append("password", password)
+		formData.append("role", role)
+
+    try {
+			const response = await axios.post("/user/register", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+			})
+
+      Swal2.fire({
+        icon: "success",
+        title: "Registrasi berhasil",
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      })
+    } catch (e) {
+      Swal2.fire({
+        icon: "error",
+        title: "Registrasi gagal",
+        customClass: {
+          confirmButton: "btn btn-success"
+        },
+        buttonsStyling: false
+      })
+      console.error(e)
+    } 
+
+		console.log(response.data);
 	};
 
   return (
@@ -110,8 +130,8 @@ const PageContent = () => {
                         <option disabled value="">
                           Select Role
                         </option>
-                        <option value="admin">Teacher</option>
-                        <option value="user">Student</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
                       </select>
                     </div>
                     <div className="col-md-12 form-group">
@@ -140,7 +160,7 @@ const PageContent = () => {
 const RegistrationPage = () => {
   return (
     <>
-      <PageHeader />
+			<PageTitle title="Registration" />
       <PageContent />
     </>
   );
