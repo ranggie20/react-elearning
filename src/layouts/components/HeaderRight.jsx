@@ -48,13 +48,12 @@ const HeaderRight = () => {
               <FaPowerOff className="icon user-icon" />
             </a>
           </li>
-        ) : (
-          <li>
-            <Link className="icon-link" to="/login">
-              <LuUser2 className="icon user-icon" />
-            </Link>
-          </li>
-        ) }
+        ) : "" }
+        <li>
+          <Link className="icon-link" to={ auth.userID ? "/profile" : "/login" }>
+            <LuUser2 className="icon user-icon" />
+          </Link>
+        </li>
         { auth.userID ? (
           <li>
             <Link className="icon-link" to="/cart">

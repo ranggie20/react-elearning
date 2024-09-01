@@ -1,56 +1,53 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageTitle from "../components/PageTitle";
 import axios from "../api/axios";
 import Swal2 from "sweetalert2";
 
 const PageContent = () => {
+  const navigate = useNavigate()
+
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [role, setRole] = useState("");
 
+  const [error, setError] = useState("")
+
 	const handleRegister = async (e) => {
-		console.log(name, email, password, role);
-		e.preventDefault();
+    e.preventDefault()
 
-		
-    const formData = new FormData()
-		formData.append("nama", name)
-		formData.append("email", email)
-		formData.append("password", password)
-		formData.append("role", role)
-
+    setError("")
     try {
-			const response = await axios.post("/user/register", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-			})
+      await axios.post("/user/register", {
+        nama: name,
+        email: email,
+        password: password,
+        role: role
+      })
 
       Swal2.fire({
         icon: "success",
         title: "Registrasi berhasil",
+        text: "Silahkan login untuk mulai belajar!",
         customClass: {
           confirmButton: "btn btn-success",
           cancelButton: "btn btn-danger"
         },
         buttonsStyling: false
       })
-    } catch (e) {
-      Swal2.fire({
-        icon: "error",
-        title: "Registrasi gagal",
-        customClass: {
-          confirmButton: "btn btn-success"
-        },
-        buttonsStyling: false
+      .then(() => {
+        navigate("/login")
       })
-      console.error(e)
-    } 
+    } catch (e) {
+      let error = e.message
+      if (e.response) {
+        error = e.response.data.message
+      }
 
-		console.log(response.data);
-	};
+      setError(error)
+    }
+	}
 
   return (
     <>
@@ -134,6 +131,13 @@ const PageContent = () => {
                         <option value="student">Student</option>
                       </select>
                     </div>
+                    { error ? (
+                      <div className="col-md-12">
+                        <div className="alert alert-danger">
+                          Error: { error }
+                        </div>
+                      </div>
+                    ) : "" }
                     <div className="col-md-12 form-group">
                       <div className="text-center">
 												<button type="submit" className="btn_3" >
@@ -141,7 +145,6 @@ const PageContent = () => {
 												</button>
                       </div>
                     </div>
-										
 										<p>
 											Sudah memiliki akun ? 
 											<Link to="/login" className="link" style={{marginLeft: '5px'}} >Login sekarang</Link>
