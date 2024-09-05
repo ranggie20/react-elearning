@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ThumbnailImage from '../components/ThumbnailImage';
 
 
-const PageContent = () => {
+const PageContent = ({ addUrl, editUrl }) => {
 
 	const [courses, setCourses] = useState([])
   const [filteredCourses, setFilteredCourses] = useState([])
@@ -49,7 +49,7 @@ const PageContent = () => {
             </div>
             <div className="d-flex flex-between mb-3">
               <div>
-                <Link to='/manage/courses/tambah'>
+                <Link to={addUrl || '/manage/courses/tambah'}>
                   <button type="button" className='btn btn-primary'>Tambah data</button>
                 </Link>
               </div>
@@ -86,7 +86,7 @@ const PageContent = () => {
                         {/* <td><pre>{JSON.stringify(item)}</pre></td> */}
                         <td>
                           <div className='d-flex gap-2'>
-                            <Link to={`/manage/courses/${item.course_id}`}>
+                            <Link to={`${editUrl || '/manage/courses'}/${item.course_id}`}>
                               <GoPencil />
                             </Link>
                           </div>
@@ -104,11 +104,11 @@ const PageContent = () => {
   )
 }
 
-const ManageCoursesPage = () => {
+const ManageCoursesPage = ({ addUrl, editUrl }) => {
 
   return (
     <>
-      <PageContent />
+      <PageContent addUrl={addUrl} editUrl={editUrl} />
     </>
   )
 }

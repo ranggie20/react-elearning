@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PopularItemsList from '../layouts/components/PopularItemsList';
 
 import CourseComponent from '../components/CourseComponent';
 import CategoryComponent from '../components/CategoryComponent';
 
 import axios from '../api/axios'
+import { AuthContext } from '../context/AuthProvider';
 
 const SliderArea = () => {
 	return (
@@ -148,12 +149,17 @@ const Popular = () => {
 	)
 }
 const HomePage = () => {
+	const { auth } = useContext(AuthContext)
 
 	return (
 		<>
 			<SliderArea />
-			<SectionCategory />
-			<Popular />
+			{ auth.userID && auth.roleID === "student" ? (
+				<>
+					<SectionCategory />
+					<Popular />
+				</>
+			) : "" }
 		</>
 	);
 };

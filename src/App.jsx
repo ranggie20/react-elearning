@@ -32,6 +32,7 @@ import AdminListCourse from './pages/AdminListCourse'
 import AdminListCategory from './pages/AdminListCategory';
 import CheckCookie from './components/CheckCookie';
 import CategoryListPage from './pages/CategoryListPage';
+import MyDetail from './pages/MyDetail';
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
               <Route path="/wishlist" element={<WishlistPage/>}/>
               <Route path="/mycourse" element={<MyCoursePage/>}/>
               <Route path="/mycoursemarketing" element={<MyCourseMarketing/>}/>
+              <Route path="/mydetail/:id" element={<MyDetail/>}/>
             </Route>
 
             <Route element={<CheckCookie roles={["student", "admin", "teacher"]} />}>
@@ -76,7 +78,9 @@ function App() {
             {/* Admin Pages */}
             <Route element={<CheckCookie roles={["admin"]} />}>
               <Route path="/admin-category" element={<AdminCategory/>}/>
-              <Route path="/admin-course" element={<AdminCourse/>}/>
+              <Route path="/admin-course" element={<ManageCoursesPage addUrl="/admin-course/tambah" editUrl="/admin-course" />} />
+              <Route path="/admin-course/tambah" element={<AddCoursePage/>}/>
+              <Route path="/admin-course/:id" element={<EditCoursePage/>}/>
 
               <Route path="/listtransaksi" element={<ListTransaksi/>} />
               <Route path="/listteacher" element={<ListTeacher/>} />

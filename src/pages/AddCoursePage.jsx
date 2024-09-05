@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api/axios';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const Swal2 = withReactContent(Swal)
 
 const AddCoursePage = () => {
 
@@ -7,6 +11,7 @@ const AddCoursePage = () => {
   const [courseDescription, setCourseDescription] = useState('');
   const [price, setPrice] = useState('');
   const [thumbnail, setThumbnail] = useState(null);
+  const [vidio, setvidio] = useState(null);
   const [category, setCategory] = useState('');
 
 
@@ -32,17 +37,43 @@ const AddCoursePage = () => {
     const file = e.target.files[0];
     setThumbnail(file);
   };
+  const handleVidioChange = (e) => {
+    const file = e.target.files[0];
+    setvidio(file);
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData()
+    formData.append('course_name', courseName)
+    formData.append('course_description', courseDescription)
+    formData.append('category_id', category)
+    formData.append('price', price)
+    formData.append('thumbnail', thumbnail)
+    formData.append('video', vidio)
+
     // Lakukan sesuatu dengan data yang di-submit (misalnya, kirim ke server)
-    console.log('Form submitted:', {
-      courseName,
-      courseDescription,
-      price,
-      thumbnail,
-      category,
-    });
+    try {
+      await axios.post("/teacher/create-course", formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+
+      Swal2.fire({
+        icon: "success",
+        title: "Course berhasil dibuat",
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      })
+    } catch (e) {
+      console.error(e)
+    } 
   };
 
   return (
@@ -93,6 +124,16 @@ const AddCoursePage = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="vidio" className="form-label">Vidio</label>
+          <input
+            id='vidio'
+            type="file"
+            name="vidio"
+            className="form-control-file"
+            onChange={handleVidioChange}
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="category" className="form-label">Category</label>
           <select
             id='category'
@@ -103,7 +144,7 @@ const AddCoursePage = () => {
           >
             <option value="" disabled>Select a category</option>
             {categories.map((item, index) => (
-              <option key={index} value={item.category_name}>{item.category_name}</option>
+              <option key={index} value={item.category_id}>{item.category_name}</option>
             ))}
           </select>
         </div>

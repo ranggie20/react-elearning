@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from '../api/axios';
 import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
+const Swal2 = withReactContent(Swal)
 
 const PageContent = ({courseDetail}) => {
+  const { id } = useParams()
+
   const [courseName, setCourseName] = useState('');
   const [courseDescription, setCourseDescription] = useState('');
   const [price, setPrice] = useState('');
   const [thumbnail, setThumbnail] = useState(null);
+  const [vidio, setvidio] = useState(null);
   const [category, setCategory] = useState('');
 
   
@@ -38,17 +44,43 @@ const PageContent = ({courseDetail}) => {
     const file = e.target.files[0];
     setThumbnail(file);
   };
+  const handleVidioChange = (e) => {
+    const file = e.target.files[0];
+    setvidio(file);
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData()
+    formData.append('course_name', courseName)
+    formData.append('course_description', courseDescription)
+    formData.append('category_id', category)
+    formData.append('price', price)
+    formData.append('thumbnail', thumbnail)
+    formData.append('video', vidio)
+
     // Lakukan sesuatu dengan data yang di-submit (misalnya, kirim ke server)
-    console.log('Form submitted:', {
-      courseName,
-      courseDescription,
-      price,
-      thumbnail,
-      category,
-    });
+    try {
+      await axios.put(`/teacher/update-course/${id}`, formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+
+      Swal2.fire({
+        icon: "success",
+        title: "Course berhasil dibuat",
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+      })
+    } catch (e) {
+      console.error(e)
+    } 
   };
 
   return (
@@ -96,6 +128,16 @@ const PageContent = ({courseDetail}) => {
             name="thumbnail"
             className="form-control-file"
             onChange={handleFileChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="vidio" className="form-label">Vidio</label>
+          <input
+            id='vidio'
+            type="file"
+            name="vidio"
+            className="form-control-file"
+            onChange={handleVidioChange}
           />
         </div>
         <div className="form-group">

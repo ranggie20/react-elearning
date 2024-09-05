@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from '../api/axios'
 
 const CourseKu=() => {
     return(
@@ -22,29 +23,46 @@ const CourseKu=() => {
 }
 
 const DetailCourse=() => {
+    const [courseList, setCourseList] = useState([])
+
+    const fetchCourseList = async () => {
+        try {
+            const response = await axios.get("/my-course")
+            setCourseList(response.data.data || [])
+        } catch (error) {
+            console.error("Error fetching data: ", error)
+        }
+    }
+
+    useEffect(() => {
+        fetchCourseList()
+    }, [])
+
     return(
         <>
             <div className="popular-items" style={{ paddingTop: "8rem" }}>
                 <div className="container">
                     <div className="row">
-                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
-                        <div className="single-popular-items mb-50 text-center">
-                        <Link href="/mycoursemarketing">
-                            <div className="popular-img">
-                            <img src="assets/img/gallery/popular5.png" alt="" />
-                            </div>
-                        </Link>
-                        <div className="popular-caption">
-                            <Link href="/mycoursemarketing"></Link>
-                            <h3>
-                            <Link href="/mycoursemarketing" />
-                            <Link href="/mycoursemarketing">
-                                Rahasia sukses marketing di era digital
+                    { courseList.map((c) => (
+                        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                            <div className="single-popular-items mb-50 text-center">
+                            <Link to={`/mydetail/${c.course_id}`}>
+                                <div className="popular-img">
+                                <img src={`${import.meta.env.VITE_API_URL}/${c.thumbnail}`} alt="" />
+                                </div>
                             </Link>
-                            </h3>
+                            <div className="popular-caption">
+                                <Link to={`/mydetail/${c.course_id}`}></Link>
+                                <h3>
+                                <Link to={`/mydetail/${c.course_id}`}> </Link> 
+                                <Link to={`/mydetail/${c.course_id}`}>
+                                    { c.course_name }
+                                </Link>
+                                </h3>
+                            </div>
+                            </div>
                         </div>
-                        </div>
-                    </div>
+                    )) }
                     </div>
                 </div>
             </div>

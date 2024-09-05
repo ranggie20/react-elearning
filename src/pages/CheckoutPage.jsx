@@ -35,12 +35,6 @@ const ReturningCustomer = () => {
     >
 			<Accordion defaultActiveKey="none">
 				<Card>
-					<Card.Header>
-						<span>Returning Customer?</span>
-						<Accordion.Toggle variant="link" eventKey="0" className="link" style={{border:'none', backgroundColor: 'transparent'}}>
-								Click here to login
-						</Accordion.Toggle>
-					</Card.Header>
 					<Accordion.Collapse eventKey="0">
 						<Card.Body>
 							<form
@@ -214,54 +208,7 @@ const ProccesCheckout = () => {
           <div className="billing_details">
             <div className="row">
               <div className="col-lg-8">
-                <h3>Billing Details</h3>
-                <form
-                  className="row contact_form"
-                  action="#"
-                  method="post"
-                  noValidate="novalidate"
-                >
-                  <div className="col-md-6 form-group p_star">
-										<label htmlFor="first" className="form-label">First name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="first"
-                      name="firstname"
-											placeholder="First name"
-                    />
-                  </div>
-                  <div className="col-md-6 form-group p_star">
-									<label htmlFor="last" className="form-label">First name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="last"
-                      name="lastname"
-											placeholder="Last name"
-                    />
-                  </div>
-                  <div className="col-md-6 form-group p_star">
-									<label htmlFor="email" className="form-label">Email</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="email"
-                      name="email"
-											placeholder="Email"
-                    />
-                  </div>
-                  <div className="col-md-6 form-group p_star">
-										<label htmlFor="country" className="form-label">Country</label>
-                    <select className="form-select form-control country_select" placeholder="Country">
-                      <option value={1}> Indonesia </option>
-                      <option value={2}> Amerika Serikat </option>
-                      <option value={3}> Korea Selatan </option>
-                      <option value={4}> Japan </option>
-                      <option value={5}> Australia </option>
-                    </select>
-                  </div>
-                </form>
+                
               </div>
               <div className="col-lg-4">
 								<MyOrderList/>

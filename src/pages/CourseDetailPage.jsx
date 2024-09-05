@@ -8,7 +8,7 @@ import { AuthContext } from "../context/AuthProvider";
 
 const CourseDetailPage = () => {
 	const params = useParams();
-	const [course, setCourse] = useState([]);
+	const [course, setCourse] = useState({});
 	const [allCart, setAllCart] = useState([]);
 	const [allWishlist, setAllWishlist] = useState([]);
 	const { auth, destroyAuth } = useContext(AuthContext)
@@ -144,6 +144,8 @@ const CourseDetailPage = () => {
         description={course.course_description}
         price={course.price}
 		addToCart={addToCart}
+		thumbnail={course.thumbnail}
+		video={course.video}
 		isInCart={allCart.some(item => item.course_id === course.course_id)}
 		isLoggedIn={auth.userID ? true : false}
 		addToWishlist={addToWishList}

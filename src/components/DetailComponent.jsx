@@ -7,6 +7,8 @@ const DetailComponent = ({
     url, 
     title, 
     description, 
+    thumbnail,
+    video="https://www.youtube.com/embed/OEhw6GqQDts?si=yPU4quUPi-RaSdF-",
     price, 
     isInCart=false, 
     addToCart,
@@ -35,13 +37,7 @@ const DetailComponent = ({
                 <span className="category"></span>
               </div>
               <div className="down-content">
-                <iframe 
-                  width={360} 
-                  height={300}
-                  src="https://www.youtube.com/embed/OEhw6GqQDts?si=yPU4quUPi-RaSdF-" 
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                ></iframe>
+                <img height={300} src={`${import.meta.env.VITE_API_URL}/${thumbnail}`} alt={title} />
               </div>
             </div>
           </div>
