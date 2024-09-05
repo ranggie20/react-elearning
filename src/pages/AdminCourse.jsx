@@ -101,7 +101,7 @@ const SectionProfile = () => {
           </label>
           <select id='category' className='form-control' value={category} onChange={(e) => setCategory(e.target.value)}>
             { categoryList.map((c) => (
-              <option key={c.category_id}>{ c.category_name }</option>
+              <option key={c.category_id} value={c.category_id}>{ c.category_name }</option>
             )) }
           </select>
         </div>
