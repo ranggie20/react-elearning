@@ -1,27 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios';
 import { Link } from 'react-router-dom';
-import ComponentCart from '../layouts/components/ComponentCart';
-
-const SectionCart = () => {
-    return (
-        <>
-            <div className="slider-area">
-                <div className="single-slider slider-height2 d-flex align-items-center">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-xl-12">
-                                <div className="hero-cap text-center">
-                                    <h2>Cart List</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-};
+import PageTitle from '../components/PageTitle'
 
 const SectionArea = () => {
     const [cartItems, setCartItems] = useState([])
@@ -102,7 +82,7 @@ const SectionArea = () => {
 const CartPage = () => {
     return (
         <>
-            <SectionCart />
+            <PageTitle title={'Cart List'}/>
             <SectionArea />
         </>
     );
