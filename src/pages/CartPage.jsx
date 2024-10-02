@@ -9,15 +9,20 @@ const SectionArea = () => {
 
     const fetchCartItems = async () => {
         try {
-            const response = await axios.get("/cart/cartpage")
-
-            setCartItems(response.data.data || [])
-
-            setSubTotal(response.data.data.reduce((acc, item) => acc + item.total_amount, 0))
+          const response = await axios.get("/cart/cartpage");
+      
+          setCartItems(response.data.data || []);
+      
+          console.log("Cart items fetched:", response.data.data); 
+      
+          setSubTotal(
+            response.data.data.reduce((acc, item) => acc + item.total_amount, 0)
+          );
         } catch (e) {
-            console.error(e)
+          console.error(e);
         }
-    }
+      };
+      
 
     useEffect(() => {
         fetchCartItems()
